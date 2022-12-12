@@ -11,7 +11,13 @@ namespace Dotnet
     {
         public static void Main(string[] args)
         {
-            Menus.MainMenu();
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            Menus menu = new Menus();
+            //Menus.MainMenu();
+            
+            Modules.Logo("cat.txt");
+            Modules.Logo("SUIAP.txt");
+            menu.MainMenu();
         }
     }
 }

@@ -11,38 +11,74 @@ namespace Dotnet
     {
         
         static string dirPath = @$".{Path.DirectorySeparatorChar}playListDB";
+        static string signJSON = ".json";
 
         public static void AddFileToPlaylist(string path, string playlistName)
         {
-            FileInfo playlist = new FileInfo(dirPath + Path.DirectorySeparatorChar + playlistName);
+            FileInfo playlist = new FileInfo(dirPath + Path.DirectorySeparatorChar + playlistName + signJSON);
             
-            Modules.CreateDir(dirPath);
-            Modules.CreateFile(playlist);
-            Modules.WriteFile(playlist, path);
-            Modules.ReadFile(playlist);
+            CreatePlaylist(playlistName, playlist);
+            //WorkerFiles.WriteFile(playlist, path);
+            WorkerFiles.WriteFileJSON(playlist, path);
+            WorkerFiles.ReadFile(playlist);
+        }
+
+        public static void AddOneDirToPlaylist(string dirPath, string playlistName)
+        {
+            string[] allfiles = WorkerFiles.GetAllFilesInDir(dirPath);
+            foreach (string file in allfiles)
+            {
+                AddFileToPlaylist(dirPath + file, playlistName);
+            }
         }
         
-        public static async void CreatePlaylist(string playlistName)
+        public static void CreatePlaylist(string playlistName)
         {
-            FileInfo playlist = new FileInfo(dirPath + Path.DirectorySeparatorChar + playlistName);
-            Modules.CreateDir(dirPath);
-            Modules.CreateFile(playlist);
+            FileInfo playlist = new FileInfo(dirPath + Path.DirectorySeparatorChar + playlistName + signJSON);
+            string jsonReq = "{\"playlist\":[";
+            WorkerFiles.CreateDir(dirPath);
+            WorkerFiles.CreateFile(playlist);
+            WorkerFiles.WriteFile(playlist, jsonReq);
+            WorkerFiles.WriteFile(playlist, "]}");
+        }
+        internal static void CreatePlaylist(string playlistName, FileInfo playlist)
+        {
+            WorkerFiles.CreateDir(dirPath);
+            WorkerFiles.CreateFile(playlist);
         }
 
-        public static void DeletePlayList(string playlistName)
+
+        public static void DeletePlaylist(string playlistName)
         {
-            FileInfo playlist = new FileInfo(dirPath + Path.DirectorySeparatorChar + playlistName);
-            Modules.DeleteFile(playlist);
+            FileInfo playlist = new FileInfo(dirPath + Path.DirectorySeparatorChar + playlistName + signJSON);
+            WorkerFiles.DeleteFile(playlist);
         }
 
-        public static void ShowPlayListDB()
+        public static void ShowPlaylistDB(bool flagWithoutExtension=false)
         {
-            string[] allfiles = Directory.GetFiles(dirPath).Select(x => System.IO.Path.GetFileNameWithoutExtension(x)).ToArray();
+            string[] allfiles;
+            if (flagWithoutExtension)
+            {
+                allfiles = WorkerFiles.GetAllFilesInDirWithoutExtension(dirPath);
+
+            }
+            else
+            {
+                allfiles = WorkerFiles.GetAllFilesInDir(dirPath);
+            }
             foreach (string filename in allfiles)
             {
                 Console.WriteLine(filename);
             }
         }
-       
+
+        public static void ShowAllDirsInDir(string dirPath)
+        {
+            string[] alldirs = WorkerFiles.GetAllDirsInDir(dirPath);
+            foreach (string dir in alldirs)
+            {
+                Console.WriteLine(dir);
+            }
+        }
     }
 }
