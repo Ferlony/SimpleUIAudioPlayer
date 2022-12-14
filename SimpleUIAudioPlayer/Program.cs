@@ -15,7 +15,7 @@ namespace Dotnet
             Menus menu = new Menus();
             //Menus.MainMenu();
             
-            Modules.Logo("cat.txt");
+            Modules.Logo("rick.txt");
             Modules.Logo("SUIAP.txt");
             menu.MainMenu();
         }
