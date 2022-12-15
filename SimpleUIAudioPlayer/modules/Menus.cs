@@ -10,85 +10,332 @@ namespace Dotnet
 {
     public class Menus: IMenus
     {
-        /*
-        Console.WriteLine(
-                "Выберите действие\n" +
-                "'1' Проиграть файлы в плейлисте\n" +
-                "'2' Добавить файлы в плейлист\n" +
-                "'3' Удалить файлы из плейлиста\n" +
-                "'4' Добавить папку в плейлист\n" +
-                "'5' Удалить папку из плейлиста\n" +
-                "'0' Выйти из программы");
-        */
-        //Объявления
-        // public static void MainMenu();
-        // private static void Menu_1_PlayFiles();
-        // private static void Menu_2_AddFiles();
-        //private static void Menu_2_AddFiles_ChoosePlaylist();
-        // private static void Menu_3_DeleteFiles();
-        // private static void Menu_4_AddDir();
-        // private static void Menu_5_DeletePlaylist();
-
         public void MainMenu()
         {
             string a;
             bool flag = true;
-            while (flag) // Заменить
+            while (flag)
             {
                 Console.WriteLine(
-                "Выберите действие\n" +
-                "'1' Проиграть файлы в плейлисте\n" +
-                "'2' Показать плейлисты\n" +
-                "'3' Добавить файлы в плейлист\n" +
-                "'4' Удалить файлы из плейлиста\n" +
-                "'5' Добавить папку в плейлист\n" +
-                "'6' Удалить плейлист\n" +
-                "'0' Выйти из программы\n"+
-                "'t' test");
+                    "Выберите действие\n" +
+                    "'1' Проиграть\n" +
+                    "'2' Показать\n" +
+                    "'3' Добавить\n" +
+                    "'4' Найти\n" +
+                    "'5' Удалить\n" +
+                    "'0' Выйти из программы\n" +
+                    "'t' test");
+                a = Console.ReadLine();
+                switch (a)
+                {
+                    case "1":
+                    {
+                        MenuPlayer_1();
+                        break;
+                    }
+                    case "2":
+                    {
+                        MenuShower_2();
+                        break;
+                    }
+                    case "3":
+                    {
+                        MenuAdder_3();
+                        break;
+                    }
+                    case "4":
+                    {
+                        MenuFinder_4();
+                        break;
+                    }
+                    case "5":
+                    {
+                        MenuDeleter_5();
+                        break;
+                    }
+                    case "0":
+                    {
+                        flag = false;
+                        Console.WriteLine("Выход из программы");
+                        break;
+                    }
+                    case "t":
+                    {
+                        string dirPath = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/Test/Music/TestMus/";
+                        string playlistName = "testdir";
+                        AWorkerDB.AddAllDirsToPlaylist(dirPath, playlistName);
+                        break;
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Неверный ввод");
+                        break;
+                    }
+                }
+            }
+        }
+        //
+        //
+        // Нужно сделать шаблон для менюшек или что-то подобное
+        // и далее переопределять его
+        //
+        //
+
+        // Console.WriteLine(
+                // "Выберите действие\n" +
+                // "'1' Проиграть файлы в плейлисте\n" +
+                // "'2' Показать плейлисты\n" +
+                // "'3' Показать содержимое плейлиста\n" +
+                // "'4' Добавить файлы в плейлист\n" +
+                // "'5' Удалить файлы из плейлиста\n" +
+                // "'6' Добавить папку в плейлист\n" +
+                // "'7' Удалить плейлист\n" +
+                // "'8' Найти файл в плейлисте\n" +
+                // "'0' Выйти из программы\n" +
+                // "'t' test");
+        public void MenuPlayer_1()
+        {
+            Menu_1_PlayFiles();
+        }
+        // case "1":
+        //     {
+        //         Menu_1_PlayFiles();
+        //         break;
+        //     }
+        // case "2":
+        //     {
+        //         AWorkerDB.ShowPlaylistDB(true);
+        //         break;
+        //     }
+        // case "3":
+        //     {
+        //         Menu_6_ShowPlaylistFiles();
+        //         break;
+        //     }
+        // case "4":
+        //     {
+        //         Menu_2_AddFiles();
+        //         break;
+        //     }
+        // case "5":
+        //     {
+        //         Menu_3_DeleteFiles();
+        //         break;
+        //     }
+        // case "6":
+        //     {
+        //         Menu_4_AddDir();
+        //         break;
+        //     }
+        // case "7":
+        //     {
+        //         Menu_5_DeletePlaylist();
+        //         break;
+        //     }
+        // case "8":
+        //     {
+        //         Menu_7_FindFileInPlaylist();
+        //         break;
+        //     }
+        public void MenuShower_2()
+        {
+            string a;
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine(
+                    "'1' Показать плейлисты\n" +
+                    "'2' Показать содержимое плейлиста\n" +
+                    "'0' Выйти из меню");
+                a = Console.ReadLine();
+                switch (a)
+                {
+                    case "1":
+                    {
+                        AWorkerDB.ShowPlaylistDB(true);
+                        break;
+                    }
+                    case "2":
+                    {
+                        Menu_6_ShowPlaylistFiles();
+                        break;
+                    }
+                    case "0":
+                    {
+                        flag = false;
+                        Console.WriteLine("Выход из программы");
+                        break;
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Неверный ввод");
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void MenuAdder_3()
+        {
+            string a;
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine(
+                    "'1' Добавить папку в плейлист\n" +
+                    "'2' Добавить файл в плейлист\n" +
+                    "'0' Выйти из меню");
+                a = Console.ReadLine();
+                switch (a)
+                {
+                    case "1":
+                    {
+                        Menu_4_AddDir();
+                        break;
+                    }
+                    case "2":
+                    {
+                        Menu_2_AddFiles();
+                        break;   
+                    }
+                    case "0":
+                    {
+                        flag = false;
+                        Console.WriteLine("Выход из программы");
+                        break;
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Неверный ввод");
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void MenuFinder_4()
+        {
+            string a;
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine(
+                    "'1' Найти файл в плейлисте\n" +
+                    "'2' Найти файл во всех плейлистах\n" + // Еще не сделано
+                    "'0' Выйти из меню");
+                a = Console.ReadLine();
+                switch (a)
+                {
+                    case "1":
+                    {
+                        Menu_7_FindFileInPlaylist();
+                        break;
+                    }
+                    case "2":
+                    {
+                        break;
+                    }
+                    case "0":
+                    {
+                        flag = false;
+                        Console.WriteLine("Выход из программы");
+                        break;
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Неверный ввод");
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        public void MenuDeleter_5()
+        {
+            string a;
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine(
+                    "'1' Удалить плейлист\n" +
+                    "'2' Удалить файл из плейлиста\n" +
+                    "'0' Выйти из меню");
+                a = Console.ReadLine();
+                switch (a)
+                {
+                    case "1":
+                    {
+                        Menu_5_DeletePlaylist();
+                        break;
+                    }
+                    case "2":
+                    {
+                        Menu_3_DeleteFiles();
+                        break;
+                    }
+                    case "0":
+                    {
+                        flag = false;
+                        Console.WriteLine("Выход из программы");
+                        break;
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Неверный ввод");
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void Menu_6_ShowPlaylistFiles()
+        {
+            string a;
+            bool flag = true;
+
+            while (flag)
+            {
+                Console.WriteLine(
+                    "'1' Выберите плейлист\n" +
+                    //"'2' Показать плейлисты\n" +
+                    "'0' Выйти из меню");
                 a = Console.ReadLine();
                 switch (a)
                 {
                     case "1":
                         {
-                            Menu_1_PlayFiles();
-                            break;
+                            AWorkerDB.ShowPlaylistDB(true);
+                            Console.WriteLine("Введите название плейлиста\n");
+                            string playlistName = Console.ReadLine();
+                            if (playlistName != "")
+                            {
+                                try
+                                {
+                                    AWorkerDB.ShowPlaylistFiles(playlistName);
+                                    break;
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Пустой путь");
+                                break;
+                            }
                         }
-                    case "2":
-                        {
-                            WorkerDB.ShowPlaylistDB(true);
-                            break;
-                        }
-                    case "3":
-                        {
-                            Menu_2_AddFiles();
-                            break;
-                        }
-                    case "4":
-                        {
-                            Menu_3_DeleteFiles();
-                            break;
-                        }
-                    case "5":
-                        {
-                            Menu_4_AddDir();
-                            break;
-                        }
-                    case "6":
-                        {
-                            Menu_5_DeletePlaylist();
-                            break;
-                        }
+                    // case "2":
+                    //     {
+                    //         AWorkerDB.ShowPlaylistDB(true);
+                    //         break;
+                    //     }
                     case "0":
                         {
                             flag = false;
-                            Console.WriteLine("Выход из программы");
-                            break;
-                        }
-                    case "t":
-                        {
-                            string dirPath = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/Test/Music/TestMus/";
-                            string playlistName = "testdir";
-                            WorkerDB.AddAllDirsToPlaylist(dirPath, playlistName);
+                            Console.WriteLine("Выход из меню");
                             break;
                         }
                     default:
@@ -98,6 +345,108 @@ namespace Dotnet
                         }
                 }
             }
+        }
+
+        public void Menu_7_FindFileInPlaylist()
+        {
+            string a;
+            bool flag = true;
+            string playlistName = null;
+            try
+            {
+                playlistName = Menu_7_FindFileInPlaylist_ChoosePlaylist();
+
+                while (flag)
+                {
+                    Console.WriteLine(
+                        "'1' Найти файл в плейлисте\n" +
+                        "'0' Выйти из меню");
+
+                    a = Console.ReadLine();
+
+                    switch (a)
+                    {
+                        case "1":
+                            {
+                                AWorkerDB.ShowPlaylistDB(true);
+                                Console.WriteLine("Введите название файла в плейлисте,\nкоторый хотите найти\n");
+                                string stringToFind = Console.ReadLine();
+                                if (stringToFind != "")
+                                {
+                                    try
+                                    {
+                                        AWorkerDB.FindStringInFile(playlistName, stringToFind);
+                                        break;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine(ex.Message);
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Пустой путь");
+                                    break;
+                                }
+                            }
+                        case "0":
+                            {
+                                flag = false;
+                                Console.WriteLine("Выход из меню");
+                                break;
+                            }
+                        default:
+                            {
+                                Console.WriteLine("Неверный ввод");
+                                break;
+                            }
+                    }
+                }
+            }
+            catch (NoPlaylistChosenException ex)
+            {
+                Console.WriteLine("Не был выбран плейлист");
+            }
+        }
+        public string Menu_7_FindFileInPlaylist_ChoosePlaylist()
+        {
+            string a;
+            bool flag = true;
+            string playlistName = "";//"ErrorNamePlayList";
+            while (flag)
+            {
+                Console.WriteLine("Будет выбран последний выбранный или созданный плейлист\n" +
+                    "'1' Выберете плейлист\n"+
+                    "'0' Выход из меню");
+                a = Console.ReadLine();
+                switch (a)
+                {
+                    case "1":
+                    {
+                        AWorkerDB.ShowPlaylistDB(true);
+                        Console.WriteLine("Введите название плейлиста");
+                        playlistName = Console.ReadLine();
+                        break;
+                    }
+                    case "0":
+                    {
+                        flag = false;
+                        Console.WriteLine("Выход из меню");
+                        break;
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Неверный ввод");
+                        break;
+                    }
+                }
+            }
+            if (playlistName == "")
+            {
+                throw new NoPlaylistChosenException("NoPlaylistChosen");
+            }
+            return playlistName;
         }
 
         public string Menu_2_AddFiles_ChoosePlaylist()
@@ -116,7 +465,7 @@ namespace Dotnet
                 {
                     case "1":
                     {
-                        WorkerDB.ShowPlaylistDB(true);
+                        AWorkerDB.ShowPlaylistDB(true);
                         Console.WriteLine("Введите название плейлиста");
                         playlistName = Console.ReadLine();
                         break;
@@ -125,7 +474,7 @@ namespace Dotnet
                     {
                         Console.WriteLine("Введите название плейлиста");
                         playlistName = Console.ReadLine();
-                        WorkerDB.CreatePlaylist(playlistName);
+                        AWorkerDB.CreatePlaylist(playlistName);
                         break;
                     }
                     case "0":
@@ -156,7 +505,7 @@ namespace Dotnet
             string a;
             bool flag = true;
             
-            while (flag) // Заменить
+            while (flag) 
             {
                 Console.WriteLine(
                     "'1' Удалить плейлист\n"+
@@ -168,10 +517,10 @@ namespace Dotnet
                 {
                     case "1":
                     {
-                        WorkerDB.ShowPlaylistDB(true);
+                        AWorkerDB.ShowPlaylistDB(true);
                         Console.WriteLine("Введите название плейлиста");
                         string playlistName = Console.ReadLine();
-                        WorkerDB.DeletePlaylist(playlistName);
+                        AWorkerDB.DeletePlaylist(playlistName);
                         break;
                     }
                     case "0":
@@ -198,7 +547,7 @@ namespace Dotnet
             try
             {
                 playlistName = Menu_2_AddFiles_ChoosePlaylist();
-                while (flag) // Заменить
+                while (flag) 
                 {
                     Console.WriteLine(
                         "'1' Добавить директорию\n" +
@@ -216,7 +565,7 @@ namespace Dotnet
                                 {
                                     try
                                     {
-                                        WorkerDB.AddAllDirsToPlaylist(path, playlistName);
+                                        AWorkerDB.AddAllDirsToPlaylist(path, playlistName);
                                         break;
                                     }
                                     catch (Exception ex)
@@ -258,45 +607,62 @@ namespace Dotnet
         {
             string a;
             bool flag = true;
-            while (flag) // Заменить
+            string playlistName = null;
+
+            try
             {
-                Console.WriteLine(
-                    "'1' Удалить файлы\n"+
-                    "'0' Выйти из меню");
-
-                a = Console.ReadLine();
-                
-                switch(a)
+                playlistName = Menu_2_AddFiles_ChoosePlaylist();
+                while (flag) 
                 {
-                    case "1":
-                    {
-                        Console.WriteLine("Выберите файлы\n");
-                        try
-                        {
-                            // Вписать путь? Массивом?
-                            // Здесь должна быть функция
-                            // foo(path)
-                            break;
-                        }
-                        catch
-                        {
-                            Console.WriteLine("Какая-то ошибка");
-                            break;
-                        }
+                    Console.WriteLine(
+                        "'1' Удалить файл из плейлиста\n"+
+                        "'0' Выйти из меню");
 
-                    }
-                    case "0":
+                    a = Console.ReadLine();
+                    
+                    switch(a)
                     {
-                        flag = false;
-                        Console.WriteLine("Выход из меню");
-                        break;
-                    }
-                    default:
-                    {
-                        Console.WriteLine("Неверный ввод");
-                        break;
+                        case "1":
+                        {
+                            Console.WriteLine("Введите название файла,\nкоторый хотите удалить\n");
+                            string stringToDelete = Console.ReadLine();
+                            if (stringToDelete != "")
+                            {
+                                try
+                                {
+                                    AWorkerDB.DeleteFileFromPlaylist(playlistName, stringToDelete);
+                                    break;
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Пустой путь");
+                                break;
+                            }
+
+                        }
+                        case "0":
+                        {
+                            flag = false;
+                            Console.WriteLine("Выход из меню");
+                            break;
+                        }
+                        default:
+                        {
+                            Console.WriteLine("Неверный ввод");
+                            break;
+                        }
                     }
                 }
+            }
+            catch (NoPlaylistChosenException ex)
+            {
+                Console.WriteLine("Не был выбран плейлист");
             }
         }
 
@@ -310,7 +676,7 @@ namespace Dotnet
             try
             {
                 playlistName = Menu_2_AddFiles_ChoosePlaylist();
-                while (flag) // Заменить
+                while (flag) 
                 {
                     Console.WriteLine(
                         "'1' Добавить файлы\n" +
@@ -328,7 +694,7 @@ namespace Dotnet
                                 {
                                     try
                                     {
-                                        WorkerDB.AddFileToPlaylist(path, playlistName);
+                                        AWorkerDB.AddFileToPlaylist(path, playlistName);
                                         break;
 
                                     }
@@ -370,7 +736,7 @@ namespace Dotnet
         {
             string a;
             bool flag = true;
-            while (flag) // Заменить
+            while (flag) 
             {
                 Console.WriteLine("Выберите плейлист:");
                 // Здесь должен быть вывод списка файлов плейлиста

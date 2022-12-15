@@ -14,7 +14,7 @@ namespace Dotnet
             string dirPath = @$".{Path.DirectorySeparatorChar}modules{Path.DirectorySeparatorChar}logos";
 
             FileInfo logofile = new FileInfo(dirPath + Path.DirectorySeparatorChar + logoname);
-            WorkerFiles.ReadFile(logofile, false);
+            Console.WriteLine(WorkerFiles.ReadFile(logofile, false));
         }
     }
 }
