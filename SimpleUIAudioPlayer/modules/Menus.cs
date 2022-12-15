@@ -81,62 +81,11 @@ namespace Dotnet
         //
         //
 
-        // Console.WriteLine(
-                // "Выберите действие\n" +
-                // "'1' Проиграть файлы в плейлисте\n" +
-                // "'2' Показать плейлисты\n" +
-                // "'3' Показать содержимое плейлиста\n" +
-                // "'4' Добавить файлы в плейлист\n" +
-                // "'5' Удалить файлы из плейлиста\n" +
-                // "'6' Добавить папку в плейлист\n" +
-                // "'7' Удалить плейлист\n" +
-                // "'8' Найти файл в плейлисте\n" +
-                // "'0' Выйти из программы\n" +
-                // "'t' test");
         public void MenuPlayer_1()
         {
             Menu_1_PlayFiles();
         }
-        // case "1":
-        //     {
-        //         Menu_1_PlayFiles();
-        //         break;
-        //     }
-        // case "2":
-        //     {
-        //         AWorkerDB.ShowPlaylistDB(true);
-        //         break;
-        //     }
-        // case "3":
-        //     {
-        //         Menu_6_ShowPlaylistFiles();
-        //         break;
-        //     }
-        // case "4":
-        //     {
-        //         Menu_2_AddFiles();
-        //         break;
-        //     }
-        // case "5":
-        //     {
-        //         Menu_3_DeleteFiles();
-        //         break;
-        //     }
-        // case "6":
-        //     {
-        //         Menu_4_AddDir();
-        //         break;
-        //     }
-        // case "7":
-        //     {
-        //         Menu_5_DeletePlaylist();
-        //         break;
-        //     }
-        // case "8":
-        //     {
-        //         Menu_7_FindFileInPlaylist();
-        //         break;
-        //     }
+        
         public void MenuShower_2()
         {
             string a;
@@ -298,7 +247,6 @@ namespace Dotnet
             {
                 Console.WriteLine(
                     "'1' Выберите плейлист\n" +
-                    //"'2' Показать плейлисты\n" +
                     "'0' Выйти из меню");
                 a = Console.ReadLine();
                 switch (a)
@@ -327,11 +275,6 @@ namespace Dotnet
                                 break;
                             }
                         }
-                    // case "2":
-                    //     {
-                    //         AWorkerDB.ShowPlaylistDB(true);
-                    //         break;
-                    //     }
                     case "0":
                         {
                             flag = false;
