@@ -29,55 +29,6 @@ namespace Dotnet
         // private static void Menu_4_AddDir();
         // private static void Menu_5_DeletePlaylist();
 
-        public string Menu_2_AddFiles_ChoosePlaylist()
-        {
-            string a;
-            bool flag = true;
-            string playlistName = "";//"ErrorNamePlayList";
-            while (flag)
-            {
-                Console.WriteLine("Будет выбран последний выбранный или созданный плейлист\n" +
-                    "'1' Выберете плейлист\n"+
-                    "'2' Создайте новый\n"+
-                    "'0' Выход из меню");
-                a = Console.ReadLine();
-                switch (a)
-                {
-                    case "1":
-                    {
-                        WorkerDB.ShowPlaylistDB(true);
-                        Console.WriteLine("Введите название плейлиста");
-                        playlistName = Console.ReadLine();
-                        break;
-                    }
-                    case "2":
-                    {
-                        Console.WriteLine("Введите название плейлиста");
-                        playlistName = Console.ReadLine();
-                        WorkerDB.CreatePlaylist(playlistName);
-                        break;
-                    }
-                    case "0":
-                    {
-                        flag = false;
-                        Console.WriteLine("Выход из меню");
-                        break;
-                    }
-                    default:
-                    {
-                        Console.WriteLine("Неверный ввод");
-                        break;
-                    }
-                }
-            }
-            if (playlistName == "")
-            {
-                throw new NoPlaylistChosenException("NoPlaylistChosen");
-            }
-            return playlistName;
-            
-        }
-
         public void MainMenu()
         {
             string a;
@@ -135,9 +86,9 @@ namespace Dotnet
                         }
                     case "t":
                         {
-                            string dirPath = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/Test/Music/TestMus/all/";
+                            string dirPath = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/Test/Music/TestMus/";
                             string playlistName = "testdir";
-                            WorkerDB.AddOneDirToPlaylist(dirPath, playlistName);
+                            WorkerDB.AddAllDirsToPlaylist(dirPath, playlistName);
                             break;
                         }
                     default:
@@ -148,6 +99,57 @@ namespace Dotnet
                 }
             }
         }
+
+        public string Menu_2_AddFiles_ChoosePlaylist()
+        {
+            string a;
+            bool flag = true;
+            string playlistName = "";//"ErrorNamePlayList";
+            while (flag)
+            {
+                Console.WriteLine("Будет выбран последний выбранный или созданный плейлист\n" +
+                    "'1' Выберете плейлист\n"+
+                    "'2' Создайте новый\n"+
+                    "'0' Выход из меню");
+                a = Console.ReadLine();
+                switch (a)
+                {
+                    case "1":
+                    {
+                        WorkerDB.ShowPlaylistDB(true);
+                        Console.WriteLine("Введите название плейлиста");
+                        playlistName = Console.ReadLine();
+                        break;
+                    }
+                    case "2":
+                    {
+                        Console.WriteLine("Введите название плейлиста");
+                        playlistName = Console.ReadLine();
+                        WorkerDB.CreatePlaylist(playlistName);
+                        break;
+                    }
+                    case "0":
+                    {
+                        flag = false;
+                        Console.WriteLine("Выход из меню");
+                        break;
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Неверный ввод");
+                        break;
+                    }
+                }
+            }
+            if (playlistName == "")
+            {
+                throw new NoPlaylistChosenException("NoPlaylistChosen");
+            }
+            return playlistName;
+            
+        }
+
+        
 
         public void Menu_5_DeletePlaylist()
         {
@@ -214,7 +216,7 @@ namespace Dotnet
                                 {
                                     try
                                     {
-                                        WorkerDB.AddOneDirToPlaylist(path, playlistName);
+                                        WorkerDB.AddAllDirsToPlaylist(path, playlistName);
                                         break;
                                     }
                                     catch (Exception ex)

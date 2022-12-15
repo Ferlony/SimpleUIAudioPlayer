@@ -23,12 +23,24 @@ namespace Dotnet
             WorkerFiles.ReadFile(playlist);
         }
 
-        public static void AddOneDirToPlaylist(string dirPath, string playlistName)
+        internal static void AddOneDirToPlaylist(string dirPath, string playlistName)
         {
             string[] allfiles = WorkerFiles.GetAllFilesInDir(dirPath);
             foreach (string file in allfiles)
             {
                 AddFileToPlaylist(dirPath + file, playlistName);
+            }
+        }
+
+        public static void AddAllDirsToPlaylist(string dirPath, string playlistName)
+        {
+            string[] alldirs = WorkerFiles.GetAllDirsInDir(dirPath);
+            string newDirPath;
+
+            foreach (string dir in alldirs)
+            {
+                newDirPath = dirPath + dir + Path.DirectorySeparatorChar;
+                AddOneDirToPlaylist(newDirPath, playlistName);
             }
         }
         
