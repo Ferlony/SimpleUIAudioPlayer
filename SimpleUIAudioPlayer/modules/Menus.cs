@@ -182,6 +182,7 @@ namespace Dotnet
                     }
                     case "2":
                     {
+                        MenuFinder_4_FindStingInAllDB();   
                         break;
                     }
                     case "0":
@@ -236,6 +237,58 @@ namespace Dotnet
                     }
                 }
             }
+        }
+
+        public void MenuFinder_4_FindStingInAllDB()
+        {
+            bool flag = true;
+            while (flag)
+                {
+                    Console.WriteLine(
+                        "'1' Найти файл во всех плейлистах\n" +
+                        "'0' Выйти из меню");
+
+                    string a = Console.ReadLine();
+
+                    switch (a)
+                    {
+                        case "1":
+                            {
+                                AWorkerDB.ShowPlaylistDB(true);
+                                Console.WriteLine("Введите название файла,\nкоторый хотите найти во всех плейлистах\n");
+                                string stringToFind = Console.ReadLine();
+                                if (stringToFind != "")
+                                {
+                                    try
+                                    {
+                                        AWorkerDB.FindStringInAllFiles(stringToFind);
+                                        break;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine(ex.Message);
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Пустой путь");
+                                    break;
+                                }
+                            }
+                        case "0":
+                            {
+                                flag = false;
+                                Console.WriteLine("Выход из меню");
+                                break;
+                            }
+                        default:
+                            {
+                                Console.WriteLine("Неверный ввод");
+                                break;
+                            }
+                    }
+                }
         }
 
         public void Menu_6_ShowPlaylistFiles()

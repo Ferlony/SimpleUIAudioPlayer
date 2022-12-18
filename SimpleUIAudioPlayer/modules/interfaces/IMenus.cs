@@ -21,6 +21,8 @@ namespace Dotnet
         void Menu_7_FindFileInPlaylist();
         void Menu_6_ShowPlaylistFiles();
 
+        void MenuFinder_4_FindStingInAllDB();
+
 
         void MenuPlayer_1();
         void MenuShower_2();

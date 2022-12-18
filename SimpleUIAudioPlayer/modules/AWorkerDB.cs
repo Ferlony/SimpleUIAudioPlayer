@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -107,15 +108,14 @@ namespace Dotnet
             int lineIndex = WorkerFiles.FindStringLineInFile(file, stringToDelete);
             if ((lineIndex > 2) && (lineIndex % 2 > 0))
             {
-                //WorkerFiles.DeleteLineInFile(file, lineIndex - 1);
                 WorkerFiles.DeleteLineInFile(file, lineIndex - 1);
                 WorkerFiles.DeleteLineInFile(file, lineIndex - 2);
-                Console.WriteLine($"Текст {stringToDelete} \nуспешно удален в \nплейлисте {playlistName}");
+                Console.WriteLine($"Текст {stringToDelete} \nуспешно удален в плейлисте {playlistName}");
             }
             else
             {
                 Console.WriteLine(
-                    $"Текст {stringToDelete} \nне найден в \nплейлисте {playlistName}/n"+
+                    $"Текст {stringToDelete} \nне найден в плейлисте {playlistName}\n"+
                      "Или не может быть удален");
             }
         }
@@ -126,7 +126,7 @@ namespace Dotnet
             int lineIndex = WorkerFiles.FindStringLineInFile(file, stringToFind);
             if (lineIndex > 0)
             {
-                Console.WriteLine($"Текст {stringToFind} \nнайден в \n{lineIndex.ToString()} строке \nплейлиста {playlistName}");
+                Console.WriteLine($"Текст {stringToFind} \nнайден в {lineIndex.ToString()} строке плейлиста {playlistName}");
             }
             else
             {
@@ -141,9 +141,43 @@ namespace Dotnet
             Console.WriteLine(filesInPlaylist);
         }
 
-        // public static void FindStringInAllFiles(string playlistName, string stringToFind)
-        // {
+        public static void FindStringInAllFiles(string stringToFind)
+        {
+            string[] allfiles = WorkerFiles.GetAllFilesInDirWithoutExtension(dirPath);
+            	
+            List<string> foundSongsInPlaylists = new List<string>();
+            List<int> foundSongsInPlaylistsIndexLine = new List<int>();
+            foreach (string playlistName in allfiles)
+            {
+                FileInfo file = new FileInfo(dirPath + Path.DirectorySeparatorChar + playlistName + signJSON);
+                int lineIndex = WorkerFiles.FindStringLineInFile(file, stringToFind);
+                if (lineIndex > 0)
+                {
+                    //Console.WriteLine($"Текст {stringToFind} \nнайден в \n{lineIndex.ToString()} строке \nплейлиста {playlistName}");
+                    foundSongsInPlaylists.Add(playlistName);
+                    foundSongsInPlaylistsIndexLine.Add(lineIndex);
 
-        // }
+                }
+                // else
+                // {
+                //     //Console.WriteLine($"Текст {stringToFind} \nне найден в \nплейлисте {playlistName}");
+                // }
+            }
+
+            if (foundSongsInPlaylists.Count > 0)
+            {
+                for (int i = 0; i < foundSongsInPlaylists.Count; i++)
+                {
+                    Console.WriteLine($"Текст {stringToFind} \nнайден в {foundSongsInPlaylistsIndexLine[i].ToString()} строке плейлиста {foundSongsInPlaylists[i]}\n");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Текст {stringToFind} \nне найден\n");
+            }
+
+            Console.WriteLine($"Всего найдено: {foundSongsInPlaylists.Count}");
+
+        }
     }
 }
