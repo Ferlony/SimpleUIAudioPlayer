@@ -179,5 +179,78 @@ namespace Dotnet
             Console.WriteLine($"Всего найдено: {foundSongsInPlaylists.Count}");
 
         }
+
+        public static List<string> GetFilesFromDB(string playlistName)
+        {
+            FileInfo playlist = new FileInfo(dirPath + Path.DirectorySeparatorChar + playlistName + signJSON);
+            List<string> allSongsInPlaylist = WorkerFiles.GetFilesInDB(playlist);
+
+            return allSongsInPlaylist;
+
+        }
+
+        public static string GetStringFromBDLine(string file, string desiredString)
+        {            
+            string checktext = "";
+            int counter = 0;
+            bool flag = false;
+            for (int i = 0; i < file.Length; i++)
+            {
+                if (!flag)
+                {
+                    if (file[i].ToString() == "\"")
+                    {
+                        counter++;
+                    }
+                    if (counter > 0)
+                    {
+                        if (counter % 2 > 0)
+                        {
+                            checktext += file[i];
+                        }
+                        else
+                        {
+                            if (checktext == "\"" + desiredString)
+                            {
+                                flag = true;
+                                counter = 0;
+                                checktext = "";
+                            }
+                            else
+                            {
+                                checktext = "";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (counter < 1)
+                    {
+                        i += 2;
+                        counter++;
+                    }
+                    checktext += file[i];
+                    if (file[i].ToString() == "\"")
+                    {
+                        return checktext.Replace("\"", "");
+                    }
+                }
+            }
+            return "";
+        }
+
+
+
+        
+        public static List<string> GetListFilesFromDB(List<string> list, string desiredString)
+        {
+            List<string> newlist = new List<string>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                newlist.Add(GetStringFromBDLine(list[i], desiredString));   
+            }
+            return newlist;
+        }
     }
 }

@@ -4,6 +4,8 @@ using System.Threading;
 using System.Collections;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
+
 
 namespace Dotnet
 {
@@ -156,9 +158,6 @@ namespace Dotnet
             bool flag = false;
             string lineChecker = "\"fileName\"" + ":" + "\"" + stringToFind + "\"";
             
-            
-            
-
             StreamReader reader = new StreamReader(path, Encoding.UTF8);
             while ((line = reader.ReadLine()) != null)
             {
@@ -178,6 +177,25 @@ namespace Dotnet
             {
                 return -1;
             }
+        }
+
+        internal static List<string> GetFilesInDB(FileInfo file)
+        {
+            string path = file.FullName;
+            string[] lines = File.ReadAllLines(path);
+            List<string> newtext = new List<string>();
+            
+            if (lines.Length != 2)
+            {
+                for (int i = 1; i < lines.Length - 1; i++)
+                {
+                    if ((i % 2 == 0))
+                    {
+                        newtext.Add(lines[i]);
+                    }
+                }
+            }
+            return newtext;
         }
 
         internal static void DeleteLineInFile(FileInfo file, int lineIndex)

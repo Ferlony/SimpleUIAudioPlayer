@@ -4,6 +4,8 @@ using System.Threading;
 using System.Collections;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
+
 
 
 namespace Dotnet
@@ -61,9 +63,18 @@ namespace Dotnet
                     }
                     case "t":
                     {
-                        string dirPath = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/Test/Music/TestMus/";
-                        string playlistName = "testdir";
-                        AWorkerDB.AddAllDirsToPlaylist(dirPath, playlistName);
+                        string playlistName = "one";
+                        List<string> allSongsInPlaylist = AWorkerDB.GetFilesFromDB(playlistName);
+                        foreach (string file in allSongsInPlaylist)
+                        {
+                            Console.WriteLine(file);
+                        }
+                        Console.WriteLine("#####################");
+                        List<string> currentPlaylistAllSongs = AWorkerDB.GetListFilesFromDB(allSongsInPlaylist, "filepath");
+                        foreach (string file in currentPlaylistAllSongs)
+                        {
+                            Console.WriteLine(file);
+                        }
                         break;
                     }
                     default:
