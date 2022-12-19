@@ -4,8 +4,6 @@ using System.Threading;
 using System.Collections;
 using System.Linq;
 using System.Text;
-using System.Collections.Generic;
-
 
 
 namespace Dotnet
@@ -63,18 +61,10 @@ namespace Dotnet
                     }
                     case "t":
                     {
-                        string playlistName = "one";
-                        List<string> allSongsInPlaylist = AWorkerDB.GetFilesFromDB(playlistName);
-                        foreach (string file in allSongsInPlaylist)
-                        {
-                            Console.WriteLine(file);
-                        }
-                        Console.WriteLine("#####################");
-                        List<string> currentPlaylistAllSongs = AWorkerDB.GetListFilesFromDB(allSongsInPlaylist, "filepath");
-                        foreach (string file in currentPlaylistAllSongs)
-                        {
-                            Console.WriteLine(file);
-                        }
+                        
+                        //string dirPath = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/Test/Music/TestMus/";
+                        //string playlistName = "testdir";
+                        //AWorkerDB.AddAllDirsToPlaylist(dirPath, playlistName);
                         break;
                     }
                     default:
@@ -424,7 +414,7 @@ namespace Dotnet
             while (flag)
             {
                 Console.WriteLine("Будет выбран последний выбранный или созданный плейлист\n" +
-                    "'1' Выберете плейлист\n"+
+                    "'1' Выберите плейлист\n"+
                     "'0' Выход из меню");
                 a = Console.ReadLine();
                 switch (a)
@@ -464,7 +454,7 @@ namespace Dotnet
             while (flag)
             {
                 Console.WriteLine("Будет выбран последний выбранный или созданный плейлист\n" +
-                    "'1' Выберете плейлист\n"+
+                    "'1' Выберите плейлист\n"+
                     "'2' Создайте новый\n"+
                     "'0' Выход из меню");
                 a = Console.ReadLine();
@@ -743,24 +733,61 @@ namespace Dotnet
         {
             string a;
             bool flag = true;
+
             while (flag) 
             {
-                Console.WriteLine("Выберите плейлист:");
-                // Здесь должен быть вывод списка файлов плейлиста
-                // Работа с файлами
-                // Выбор проигрывания
-                Console.WriteLine("'0' Выход из меню");
+                Console.WriteLine("1. Проиграть");
+                Console.WriteLine("2. Пауза");
+                Console.WriteLine("3. Воспроизвести");
+                Console.WriteLine("4. Настроить громкость");
+                Console.WriteLine("5. Перемотать");
+                Console.WriteLine("0. Выйти");
                 a = Console.ReadLine();
-                //if a == playlistValue {}
-                //else 
-                if (a == "0")
+                switch (a)
                 {
-                    flag = false;
-                    Console.WriteLine("Выход из меню");
-                }
-                else
-                {
-                    Console.WriteLine("Неверный ввод");
+                    case "1":
+                        {
+                            Console.WriteLine("Выберите плейлист:");
+                            Menu_2_AddFiles_ChoosePlaylist();
+                            PlayerWorker.Play();
+                            break;
+                        }
+                    case "2":
+                        {
+                            PlayerWorker.Stop();
+                            Console.WriteLine("Трек остановлен");
+                            break;
+                        }
+                    case "3":
+                        {
+                            PlayerWorker.Continue();
+                            Console.WriteLine("Трек воспроизведен");
+                            break;
+                        }
+                    case "4":
+                        {
+                            Console.WriteLine("Выберите громкость");
+                            int volume = Convert.ToInt32(Console.ReadLine());
+                            PlayerWorker.Volume(volume);
+                            break;
+                        }
+                        case "5":
+                        {
+                            Console.WriteLine("Введите количество секунд");
+                            int time = Convert.ToInt32(Console.ReadLine());
+                            PlayerWorker.Rewind(time);
+                            break;
+                        }
+                    case "0":
+                        {
+                            flag = false;
+                            break;
+                        }
+                        default: 
+                        {
+                            Console.WriteLine("Неверный ввод");
+                            break;
+                        }
                 }
             }
         }
