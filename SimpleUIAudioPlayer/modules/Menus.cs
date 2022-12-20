@@ -107,13 +107,13 @@ namespace Dotnet
                         }
                     case "2":
                         {
-                            PlayerWorker.Stop();
+                            WorkerPlayer.Stop();
                             Console.WriteLine("Трек остановлен");
                             break;
                         }
                     case "3":
                         {
-                            PlayerWorker.Continue();
+                            WorkerPlayer.Continue();
                             Console.WriteLine("Трек воспроизведен");
                             break;
                         }
@@ -121,14 +121,14 @@ namespace Dotnet
                         {
                             Console.WriteLine("Выберите громкость");
                             int volume = Convert.ToInt32(Console.ReadLine());
-                            PlayerWorker.Volume(volume);
+                            WorkerPlayer.Volume(volume);
                             break;
                         }
                     case "5":
                         {
                             Console.WriteLine("Введите количество секунд");
                             int time = Convert.ToInt32(Console.ReadLine());
-                            PlayerWorker.Rewind(time);
+                            WorkerPlayer.Rewind(time);
                             break;
                         }
                     case "0":
@@ -794,7 +794,7 @@ namespace Dotnet
             {
                 Console.WriteLine("Выберите плейлист:");
                 Menu_2_AddFiles_ChoosePlaylist();
-                PlayerWorker.Play();
+                WorkerPlayer.Play();
             }
             catch (NoPlaylistChosenException ex)
             {

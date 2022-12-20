@@ -17,7 +17,7 @@ namespace Dotnet
         private static string currentPlaylistSongsNames = null;
 
         private static string currentPlaylistName = null;
-        private static int currentPlaylistSongIndex = null;
+        private static int currentPlaylistSongIndex = 0;
 
         public string CurrentPlaylistName
         {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/PlayerProj.csproj": {}
+    "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/PlayerProj.csproj": {}
   },
   "projects": {
-    "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/PlayerProj.csproj": {
+    "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/PlayerProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/PlayerProj.csproj",
+        "projectUniqueName": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/PlayerProj.csproj",
         "projectName": "PlayerProj",
-        "projectPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/PlayerProj.csproj",
+        "projectPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/PlayerProj.csproj",
         "packagesPath": "/home/theuser/.nuget/packages/",
-        "outputPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/obj/",
+        "outputPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/theuser/.nuget/NuGet/NuGet.Config"
@@ -20,6 +20,8 @@
           "net6.0"
         ],
         "sources": {
+          "/home/theuser/Programms/Cs/Packages/": {},
+          "/home/theuser/Programms/Cs/Packages/libIrrKlang.so": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

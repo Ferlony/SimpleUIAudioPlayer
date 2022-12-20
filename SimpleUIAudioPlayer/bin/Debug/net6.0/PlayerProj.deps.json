@@ -7,8 +7,19 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "PlayerProj/1.0.0": {
+        "dependencies": {
+          "irrKlang.NET4": "1.0.6617.18847"
+        },
         "runtime": {
           "PlayerProj.dll": {}
+        }
+      },
+      "irrKlang.NET4/1.0.6617.18847": {
+        "runtime": {
+          "irrKlang.NET4.dll": {
+            "assemblyVersion": "1.0.6617.18847",
+            "fileVersion": "0.0.0.0"
+          }
         }
       }
     }
@@ -16,6 +27,11 @@
   "libraries": {
     "PlayerProj/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "irrKlang.NET4/1.0.6617.18847": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

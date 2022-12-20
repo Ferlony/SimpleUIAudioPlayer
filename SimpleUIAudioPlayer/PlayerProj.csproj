@@ -6,5 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
+  <ItemGroup>
+  <Reference Include="IrrKlang">
+    <HintPath>./modules/libs/irrKlang.NET4.dll</HintPath>
+    <SpecificVersion>False</SpecificVersion>
+  </Reference>
+  </ItemGroup>
 </Project>

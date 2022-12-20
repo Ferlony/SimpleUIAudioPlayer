@@ -7,7 +7,7 @@ using IrrKlang;
 
 namespace Dotnet
 {
-    partial class PlayerWorker
+    partial class WorkerPlayer
     {
         private static ISoundEngine engine = new ISoundEngine();
         private static ISound music;
