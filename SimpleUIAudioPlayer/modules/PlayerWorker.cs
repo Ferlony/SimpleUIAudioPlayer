@@ -9,32 +9,32 @@ namespace Dotnet
 {
     partial class PlayerWorker
     {
-        static public ISoundEngine engine = new ISoundEngine();
-        public static ISound music;
-        static public double volume = 0.01;
-        static public void Play()
+        private static ISoundEngine engine = new ISoundEngine();
+        private static ISound music;
+        private static double volume = 0.01;
+        public static void Play()
         {
             engine.SoundVolume = (float)volume;
-            music = engine.Play2D(@"C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer\Test\Music\TestMus\all\Rick-Astley-Never-Gonna-Give-You-Up-_Official-Music-Video_.wav", false);
+            music = engine.Play2D(currentPlaylistAllSongs[currentPlaylistSongIndex], false);
             Console.Write("Продолжительность трека: ");
             Console.Write(music.PlayLength / 60000);
             Console.Write(":");
             Console.WriteLine((music.PlayLength % 60000) / 1000);
         }
-        static public void Stop()
+        public static void Stop()
         {
             engine.SetAllSoundsPaused(true);
         }
-        static public void Continue()
+        public static void Continue()
         {
             engine.SetAllSoundsPaused(false);
         }
-        static public void Volume(int value)
+        public static void Volume(int value)
         {
             volume = value / 1000.0;
             engine.SoundVolume = (float)volume;
         }
-        static public void Rewind(int time)
+        public static void Rewind(int time)
         {
             Console.WriteLine(time);
             Console.WriteLine(music.PlayPosition);
@@ -49,5 +49,5 @@ namespace Dotnet
             Console.WriteLine(music.PlayPosition);
         }
     }
-    
+
 }

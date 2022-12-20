@@ -84,7 +84,66 @@ namespace Dotnet
 
         public void MenuPlayer_1()
         {
-            Menu_1_PlayFiles();
+            
+            string a;
+            bool flag = true;
+
+            while (flag)
+            {
+                Console.WriteLine(
+                    "'1' Проиграть\n" +
+                    "'2' Пауза\n" +
+                    "'3' Воспроизвести\n" +
+                    "'4' Настроить громкость\n" +
+                    "'5' Перемотать\n" +
+                    "'0' Выйти из меню");
+                a = Console.ReadLine();
+                switch (a)
+                {
+                    case "1":
+                        {
+                            Menu_1_PlayFiles();
+                            break;
+                        }
+                    case "2":
+                        {
+                            PlayerWorker.Stop();
+                            Console.WriteLine("Трек остановлен");
+                            break;
+                        }
+                    case "3":
+                        {
+                            PlayerWorker.Continue();
+                            Console.WriteLine("Трек воспроизведен");
+                            break;
+                        }
+                    case "4":
+                        {
+                            Console.WriteLine("Выберите громкость");
+                            int volume = Convert.ToInt32(Console.ReadLine());
+                            PlayerWorker.Volume(volume);
+                            break;
+                        }
+                    case "5":
+                        {
+                            Console.WriteLine("Введите количество секунд");
+                            int time = Convert.ToInt32(Console.ReadLine());
+                            PlayerWorker.Rewind(time);
+                            break;
+                        }
+                    case "0":
+                        {
+                            flag = false;
+                            Console.WriteLine("Выход из программы");
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Неверный ввод");
+                            break;
+                        }
+                }
+            }
         }
         
         public void MenuShower_2()
@@ -731,65 +790,17 @@ namespace Dotnet
 
         public void Menu_1_PlayFiles()
         {
-            string a;
-            bool flag = true;
-
-            while (flag) 
+            try
             {
-                Console.WriteLine("1. Проиграть");
-                Console.WriteLine("2. Пауза");
-                Console.WriteLine("3. Воспроизвести");
-                Console.WriteLine("4. Настроить громкость");
-                Console.WriteLine("5. Перемотать");
-                Console.WriteLine("0. Выйти");
-                a = Console.ReadLine();
-                switch (a)
-                {
-                    case "1":
-                        {
-                            Console.WriteLine("Выберите плейлист:");
-                            Menu_2_AddFiles_ChoosePlaylist();
-                            PlayerWorker.Play();
-                            break;
-                        }
-                    case "2":
-                        {
-                            PlayerWorker.Stop();
-                            Console.WriteLine("Трек остановлен");
-                            break;
-                        }
-                    case "3":
-                        {
-                            PlayerWorker.Continue();
-                            Console.WriteLine("Трек воспроизведен");
-                            break;
-                        }
-                    case "4":
-                        {
-                            Console.WriteLine("Выберите громкость");
-                            int volume = Convert.ToInt32(Console.ReadLine());
-                            PlayerWorker.Volume(volume);
-                            break;
-                        }
-                        case "5":
-                        {
-                            Console.WriteLine("Введите количество секунд");
-                            int time = Convert.ToInt32(Console.ReadLine());
-                            PlayerWorker.Rewind(time);
-                            break;
-                        }
-                    case "0":
-                        {
-                            flag = false;
-                            break;
-                        }
-                        default: 
-                        {
-                            Console.WriteLine("Неверный ввод");
-                            break;
-                        }
-                }
+                Console.WriteLine("Выберите плейлист:");
+                Menu_2_AddFiles_ChoosePlaylist();
+                PlayerWorker.Play();
             }
+            catch (NoPlaylistChosenException ex)
+            {
+                Console.WriteLine("Не был выбран плейлист");
+            }
+            
         }
 
     }

@@ -17,6 +17,8 @@ namespace Dotnet
         private static string currentPlaylistSongsNames = null;
 
         private static string currentPlaylistName = null;
+        private static int currentPlaylistSongIndex = null;
+
         public string CurrentPlaylistName
         {
             set
@@ -24,6 +26,7 @@ namespace Dotnet
                 currentPlaylistName = value;
                 currentPlaylist = AWorkerDB.GetFilesFromDB(currentPlaylistName);
                 currentPlaylistAllSongs = AWorkerDB.GetListFilesFromDB(currentPlaylist, "filepath");
+                currentPlaylistSongIndex = 0;
             }
         }
 
