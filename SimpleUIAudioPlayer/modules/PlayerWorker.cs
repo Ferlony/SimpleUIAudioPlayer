@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,17 +11,17 @@ namespace Dotnet
     partial class WorkerPlayer
     {
         private static ISoundEngine engine = new ISoundEngine();
-        private static ISound music;
+        public static ISound music;
         private static double volume = 0.01;
-        public async static int Play(string song)
+        public static void Play(string song)
         {
             engine.SoundVolume = (float)volume;
             music = engine.Play2D(song, false);
+            currentSongLength = music.PlayLength;
             Console.Write("Продолжительность трека: ");
             Console.Write(music.PlayLength / 60000);
             Console.Write(":");
             Console.WriteLine((music.PlayLength % 60000) / 1000);
-            return 0;
         }
         public static void Stop()
         {
@@ -37,17 +38,15 @@ namespace Dotnet
         }
         public static void Rewind(int time)
         {
-            Console.WriteLine(time);
-            Console.WriteLine(music.PlayPosition);
-            if(time > 0 )
-            {
-                music.PlayPosition = music.PlayPosition + (uint)time * 1000;
-            }
-            else
-            {
-                music.PlayPosition = music.PlayPosition + (uint)time * 1000;
-            }
-            Console.WriteLine(music.PlayPosition);
+            music.PlayPosition = music.PlayPosition + (uint)time * 1000;
+        }
+        public static void Restart()
+        {
+            music.PlayPosition = 0;
+        }
+        public static void Next()
+        {
+            music.PlayPosition = music.PlayLength;
         }
     }
 

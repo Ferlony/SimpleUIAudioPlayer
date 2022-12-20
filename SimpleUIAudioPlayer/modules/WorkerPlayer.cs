@@ -11,13 +11,11 @@ namespace Dotnet
     partial class WorkerPlayer
     {
         private static List<string> currentPlaylist = new List<string>();
-
         private static List<string> currentPlaylistAllSongs = new List<string>();
-
         private static string currentPlaylistSongsNames = null;
-
         private static string currentPlaylistName = null;
         private static int currentPlaylistSongIndex = 0;
+        public static uint currentSongLength = 0;
 
         public string CurrentPlaylistName
         {
@@ -31,16 +29,27 @@ namespace Dotnet
         }
 
 
-        public static async int PlayAllSongsInPlaylist()
+        public void PlayAllSongsInPlaylist()
         {
-            for (int i = 0; i < currentPlaylistAllSongs.Count; i++)
+            while(true)
             {
-                await Play(currentPlaylistAllSongs[currentPlaylistSongIndex]);
-                currentPlaylistSongIndex++;
+                if (currentPlaylistSongIndex == currentPlaylistAllSongs.Count)
+                {
+                    break;
+                }
+                else
+                {
+                    Thread thread = new Thread(() => Play(currentPlaylistAllSongs[currentPlaylistSongIndex]));
+                    thread.Start();
+                    thread.Join();
+                    currentPlaylistSongIndex++;
+                }
             }
-            return 0;
         }
-        
-    } 
+        public static int Time()
+        {
+            
+        }
 
+    }
 }

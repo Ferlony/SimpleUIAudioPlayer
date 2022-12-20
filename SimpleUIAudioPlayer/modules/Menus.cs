@@ -23,8 +23,7 @@ namespace Dotnet
                     "'3' Добавить\n" +
                     "'4' Найти\n" +
                     "'5' Удалить\n" +
-                    "'0' Выйти из программы\n" +
-                    "'t' test");
+                    "'0' Выйти из программы\n");
                 a = Console.ReadLine();
                 switch (a)
                 {
@@ -59,14 +58,6 @@ namespace Dotnet
                         Console.WriteLine("Выход из программы");
                         break;
                     }
-                    case "t":
-                    {
-                        
-                        //string dirPath = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/Test/Music/TestMus/";
-                        //string playlistName = "testdir";
-                        //AWorkerDB.AddAllDirsToPlaylist(dirPath, playlistName);
-                        break;
-                    }
                     default:
                     {
                         Console.WriteLine("Неверный ввод");
@@ -91,11 +82,13 @@ namespace Dotnet
             while (flag)
             {
                 Console.WriteLine(
-                    "'1' Проиграть\n" +
+                    "'1' Проиграть плейлист\n" +
                     "'2' Пауза\n" +
                     "'3' Воспроизвести\n" +
                     "'4' Настроить громкость\n" +
                     "'5' Перемотать\n" +
+                    "'6' Начать заново\n" +
+                    "'7' Следующий трек\n" +
                     "'0' Выйти из меню");
                 a = Console.ReadLine();
                 switch (a)
@@ -129,6 +122,18 @@ namespace Dotnet
                             Console.WriteLine("Введите количество секунд");
                             int time = Convert.ToInt32(Console.ReadLine());
                             WorkerPlayer.Rewind(time);
+                            break;
+                        }
+                    case "6":
+                        {
+                            WorkerPlayer.Restart();
+                            Console.WriteLine("Трек воспроизведен заново");
+                            break;
+                        }
+                    case "7":
+                        {
+                            WorkerPlayer.Next();
+                            Console.WriteLine("Воспроизведен следующий трек");
                             break;
                         }
                     case "0":
@@ -793,8 +798,9 @@ namespace Dotnet
             try
             {
                 Console.WriteLine("Выберите плейлист:");
-                Menu_2_AddFiles_ChoosePlaylist();
-                WorkerPlayer.Play();
+                WorkerPlayer player = new WorkerPlayer();
+                player.CurrentPlaylistName = Menu_2_AddFiles_ChoosePlaylist();
+                player.PlayAllSongsInPlaylist();
             }
             catch (NoPlaylistChosenException ex)
             {
