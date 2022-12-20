@@ -30,10 +30,17 @@ namespace Dotnet
             }
         }
 
+
+        public static async int PlayAllSongsInPlaylist()
+        {
+            for (int i = 0; i < currentPlaylistAllSongs.Count; i++)
+            {
+                await Play(currentPlaylistAllSongs[currentPlaylistSongIndex]);
+                currentPlaylistSongIndex++;
+            }
+            return 0;
+        }
         
-
-
-
     } 
 
 }

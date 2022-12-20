@@ -12,14 +12,15 @@ namespace Dotnet
         private static ISoundEngine engine = new ISoundEngine();
         private static ISound music;
         private static double volume = 0.01;
-        public static void Play()
+        public async static int Play(string song)
         {
             engine.SoundVolume = (float)volume;
-            music = engine.Play2D(currentPlaylistAllSongs[currentPlaylistSongIndex], false);
+            music = engine.Play2D(song, false);
             Console.Write("Продолжительность трека: ");
             Console.Write(music.PlayLength / 60000);
             Console.Write(":");
             Console.WriteLine((music.PlayLength % 60000) / 1000);
+            return 0;
         }
         public static void Stop()
         {
