@@ -9,11 +9,12 @@ namespace Dotnet
 {
     public class ProgressBar
     {
-        private int progress = 0;
-        private int maxLength = 0;
-        private static int barWidth = 10;
+        //private int progress = 0;
+        private static int maxLength = 0;
+        private static int barWidth = 20;
 
         //private string back = "\b\b\b\b\b\b\b\b\b\b\b"; 
+        private string back = "\n";
         private string block = "#";
         private string blockempt = "=";
         private int currentPosition = 0;
@@ -42,24 +43,24 @@ namespace Dotnet
             }
         }
 
-        public int Progress
-        {
-            get
-            {
-                return progress;
-            }
-            set
-            {
-                progress = value;
-            }
-        }
+        // public int Progress
+        // {
+        //     get
+        //     {
+        //         return progress;
+        //     }
+        //     set
+        //     {
+        //         progress = value;
+        //     }
+        // }
 
         public void DrawProgressBar(int currentLength, bool update=false)
         {
             if(update)
             {
-                //Console.Write(back);
-                ClearCurrentConsoleLine();
+                Console.Write(back);
+                //ClearCurrentConsoleLine();
             }
             Console.Write("[");
             
@@ -76,8 +77,9 @@ namespace Dotnet
                     Console.Write(block);
                 }
             }
-            progress++;
-            Console.Write($"] {progress} / {maxLength}");
+            //progress++;
+            string[] arr = TurnToMenute(currentLength);
+            Console.Write($"] {arr[0]} / {arr[1]}");
         }
 
         public static void ClearCurrentConsoleLine()
@@ -88,6 +90,19 @@ namespace Dotnet
             Console.Write(new string(' ', Console.WindowWidth)); 
         }
         
+        
+        public static string[] TurnToMenute(int currentLength)
+        {
+            string[] arr = new string[2];
+            arr[0] = MakeBeauty(currentLength);
+            arr[1] = MakeBeauty(maxLength);
+            return arr;
+        }
+
+        private static string MakeBeauty(int arg)
+        {
+            return (arg / 60000).ToString() + "." + ((arg % 60000) / 1000 ).ToString();
+        }
 
     }
 }
