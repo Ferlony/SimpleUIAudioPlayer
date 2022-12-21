@@ -5,6 +5,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 
+
 namespace Dotnet
 {
     public class ProgressBar
@@ -55,31 +56,38 @@ namespace Dotnet
         //     }
         // }
 
-        public string DrawProgressBar(int currentLength, bool update = false)
+        public string DrawProgressBar(int currentLength, bool update=false)
         {
-            if (update)
+            if(update)
             {
-                Console.Write(back);
-                //ClearCurrentConsoleLine();
+                //Console.Write(back);
+                ClearCurrentConsoleLine();
             }
-            Console.Write("[");
 
+            string bar = "";
+            //Console.Write("[");
+            bar += "[";
+            
             currentPosition = ((currentLength * barWidth) / maxLength);
 
             for (int i = 0; i < barWidth; i++)
             {
                 if (i > currentPosition)
                 {
-                    Console.Write(blockempt);
+                    //Console.Write(blockempt);
+                    bar += blockempt;
                 }
                 else
                 {
-                    Console.Write(block);
+                    //Console.Write(block);
+                    bar += block;
                 }
             }
             //progress++;
-            string[] arr = TurnToMinute(currentLength);
-           return($"] {arr[0]} / {arr[1]}");
+            string[] arr = TurnToMenute(currentLength);
+            //Console.Write($"] {arr[0]} / {arr[1]}");
+            bar += $"] {arr[0]} / {arr[1]}";
+            return bar;
         }
 
         public static void ClearCurrentConsoleLine()
@@ -87,11 +95,11 @@ namespace Dotnet
             int currentLineCursor = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.SetCursorPosition(0, Console.CursorLeft);
-            Console.Write(new string(' ', Console.WindowWidth));
+            Console.Write(new string(' ', Console.WindowWidth)); 
         }
-
-
-        public static string[] TurnToMinute(int currentLength)
+        
+        
+        public static string[] TurnToMenute(int currentLength)
         {
             string[] arr = new string[2];
             arr[0] = MakeBeauty(currentLength);
@@ -101,8 +109,10 @@ namespace Dotnet
 
         private static string MakeBeauty(int arg)
         {
-            return (arg / 60000).ToString() + "." + ((arg % 60000) / 1000).ToString();
+            return (arg / 60000).ToString() + "." + ((arg % 60000) / 1000 ).ToString();
         }
+
+        //public void string Create
 
     }
 }
