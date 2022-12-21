@@ -60,5 +60,11 @@ namespace Dotnet
                 Console.WriteLine((music.PlayLength % 60000) / 1000);
             }
         }
+        public static void CurrentSongProgressBar()
+        {
+            ProgressBar bar = new ProgressBar();
+            bar.MaxLength = (int)WorkerPlayer.music.PlayLength;
+            Console.WriteLine(bar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, true));
+        }
     }
 }

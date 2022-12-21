@@ -39,7 +39,14 @@ namespace Dotnet
             }
             else
             {
-                music.PlayPosition = 0;
+                if(time < 0)
+                {
+                    music.PlayPosition = 0;
+                }
+                else
+                {
+                    music.PlayPosition = music.PlayPosition + (uint)time * 1000;
+                }
             }
         }
         public static void Restart()

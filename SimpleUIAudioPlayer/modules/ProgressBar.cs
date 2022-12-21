@@ -55,15 +55,15 @@ namespace Dotnet
         //     }
         // }
 
-        public void DrawProgressBar(int currentLength, bool update=false)
+        public string DrawProgressBar(int currentLength, bool update = false)
         {
-            if(update)
+            if (update)
             {
                 Console.Write(back);
                 //ClearCurrentConsoleLine();
             }
             Console.Write("[");
-            
+
             currentPosition = ((currentLength * barWidth) / maxLength);
 
             for (int i = 0; i < barWidth; i++)
@@ -78,8 +78,8 @@ namespace Dotnet
                 }
             }
             //progress++;
-            string[] arr = TurnToMenute(currentLength);
-            Console.Write($"] {arr[0]} / {arr[1]}");
+            string[] arr = TurnToMinute(currentLength);
+           return($"] {arr[0]} / {arr[1]}");
         }
 
         public static void ClearCurrentConsoleLine()
@@ -87,11 +87,11 @@ namespace Dotnet
             int currentLineCursor = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.SetCursorPosition(0, Console.CursorLeft);
-            Console.Write(new string(' ', Console.WindowWidth)); 
+            Console.Write(new string(' ', Console.WindowWidth));
         }
-        
-        
-        public static string[] TurnToMenute(int currentLength)
+
+
+        public static string[] TurnToMinute(int currentLength)
         {
             string[] arr = new string[2];
             arr[0] = MakeBeauty(currentLength);
@@ -101,7 +101,7 @@ namespace Dotnet
 
         private static string MakeBeauty(int arg)
         {
-            return (arg / 60000).ToString() + "." + ((arg % 60000) / 1000 ).ToString();
+            return (arg / 60000).ToString() + "." + ((arg % 60000) / 1000).ToString();
         }
 
     }

@@ -4,7 +4,8 @@ using System.Threading;
 using System.Collections;
 using System.Linq;
 using System.Text;
-
+using System.Diagnostics;
+using System.Windows;
 
 namespace Dotnet
 {
@@ -55,15 +56,25 @@ namespace Dotnet
                     }
                     case "t":
                     {
-                        int N = 200;
-                        ProgressBar bar = new ProgressBar();
-                        bar.MaxLength = N;
-                        for (var i = 0; i < N; i++)
-                        {
-                            bar.DrawProgressBar(i, true);
-                            Thread.Sleep(1000);
-                        }
-                        Console.WriteLine();
+                            Process mp = new Process();
+                            ProgressBar bar = new ProgressBar();
+                            bar.MaxLength = (int)WorkerPlayer.music.PlayLength;
+                            mp.StartInfo.UseShellExecute = true;
+                            mp.StartInfo.FileName = "cmd.exe";
+                            mp.StartInfo.Arguments = @"/k echo" + bar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, true);
+                            mp.StartInfo.CreateNoWindow = false;
+                            mp.Start();
+                            int ID = mp.Id;
+                            while (true)
+                            {
+                                if (WorkerPlayer.music.Finished)
+                                {
+                                    mp.Kill();
+                                    break;
+                                }
+                            }
+                            
+                            //Console.WriteLine("аааааа");
                         break;
                     }
                     case "0":
@@ -106,6 +117,7 @@ namespace Dotnet
                         "'5' Перемотать\n" +
                         "'6' Начать заново\n" +
                         "'7' Следующий трек\n" +
+                        "'8' Прогресс текущего трека\n" +
                         "'0' Выйти из меню");
                 }
                 a = Console.ReadLine();
@@ -152,6 +164,12 @@ namespace Dotnet
                         {
                             WorkerPlayer.Next();
                             Console.WriteLine("Воспроизведен следующий трек");
+                            break;
+                        }
+                    case "8":
+                        {
+                            Console.WriteLine("Прогресс текущего трека: ");
+                            WorkerPlayer.CurrentSongProgressBar();
                             break;
                         }
                     case "0":
