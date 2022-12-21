@@ -15,7 +15,6 @@ namespace Dotnet
         private static string currentPlaylistSongsNames = null;
         private static string currentPlaylistName = null;
         private static int currentPlaylistSongIndex = 0;
-        public static uint currentSongLength = 0;
 
         public string CurrentPlaylistName
         {
@@ -31,7 +30,10 @@ namespace Dotnet
 
         public void PlayAllSongsInPlaylist()
         {
-            while(true)
+            Play(currentPlaylistAllSongs[currentPlaylistSongIndex]);
+            CurrentSongLength();
+            currentPlaylistSongIndex++;
+            while (true)
             {
                 if (currentPlaylistSongIndex == currentPlaylistAllSongs.Count)
                 {
@@ -39,17 +41,24 @@ namespace Dotnet
                 }
                 else
                 {
-                    Thread thread = new Thread(() => Play(currentPlaylistAllSongs[currentPlaylistSongIndex]));
-                    thread.Start();
-                    thread.Join();
-                    currentPlaylistSongIndex++;
+                    if(music.Finished)
+                    {
+                        Play(currentPlaylistAllSongs[currentPlaylistSongIndex]);
+                        CurrentSongLength();
+                        currentPlaylistSongIndex++;
+                    }
                 }
             }
         }
-        public static int Time()
+        private static void CurrentSongLength()
         {
-            
+            lock(Menus.obj)
+            {
+                Console.Write("Продолжительность трека: ");
+                Console.Write(music.PlayLength / 60000);
+                Console.Write(":");
+                Console.WriteLine((music.PlayLength % 60000) / 1000);
+            }
         }
-
     }
 }

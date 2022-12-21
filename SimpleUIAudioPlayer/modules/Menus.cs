@@ -10,6 +10,7 @@ namespace Dotnet
 {
     public class Menus: IMenus
     {
+        public static object obj = new object();
         public void MainMenu()
         {
             string a;
@@ -23,7 +24,7 @@ namespace Dotnet
                     "'3' Добавить\n" +
                     "'4' Найти\n" +
                     "'5' Удалить\n" +
-                    "'0' Выйти из программы\n");
+                    "'0' Выйти из программы");
                 a = Console.ReadLine();
                 switch (a)
                 {
@@ -56,6 +57,7 @@ namespace Dotnet
                     {
                         flag = false;
                         Console.WriteLine("Выход из программы");
+                        Environment.Exit(0);
                         break;
                     }
                     default:
@@ -75,21 +77,24 @@ namespace Dotnet
 
         public void MenuPlayer_1()
         {
-            
+
             string a;
             bool flag = true;
 
             while (flag)
             {
-                Console.WriteLine(
-                    "'1' Проиграть плейлист\n" +
-                    "'2' Пауза\n" +
-                    "'3' Воспроизвести\n" +
-                    "'4' Настроить громкость\n" +
-                    "'5' Перемотать\n" +
-                    "'6' Начать заново\n" +
-                    "'7' Следующий трек\n" +
-                    "'0' Выйти из меню");
+                lock (obj)
+                {
+                    Console.WriteLine(
+                        "'1' Проиграть плейлист\n" +
+                        "'2' Пауза\n" +
+                        "'3' Воспроизвести\n" +
+                        "'4' Настроить громкость\n" +
+                        "'5' Перемотать\n" +
+                        "'6' Начать заново\n" +
+                        "'7' Следующий трек\n" +
+                        "'0' Выйти из меню");
+                }
                 a = Console.ReadLine();
                 switch (a)
                 {
@@ -800,14 +805,13 @@ namespace Dotnet
                 Console.WriteLine("Выберите плейлист:");
                 WorkerPlayer player = new WorkerPlayer();
                 player.CurrentPlaylistName = Menu_2_AddFiles_ChoosePlaylist();
-                player.PlayAllSongsInPlaylist();
+                Thread thread = new Thread(() => player.PlayAllSongsInPlaylist());
+                thread.Start();
             }
             catch (NoPlaylistChosenException ex)
             {
                 Console.WriteLine("Не был выбран плейлист");
             }
-            
         }
-
     }
 }
