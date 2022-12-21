@@ -53,6 +53,19 @@ namespace Dotnet
                         MenuDeleter_5();
                         break;
                     }
+                    case "t":
+                    {
+                        int N = 200;
+                        ProgressBar bar = new ProgressBar();
+                        bar.MaxLength = N;
+                        for (var i = 0; i < N; i++)
+                        {
+                            bar.DrawProgressBar(i, true);
+                            Thread.Sleep(1000);
+                        }
+                        Console.WriteLine();
+                        break;
+                    }
                     case "0":
                     {
                         flag = false;
