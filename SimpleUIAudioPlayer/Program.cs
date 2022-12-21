@@ -30,11 +30,9 @@ namespace Dotnet
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Menus menu = new Menus();
             
-            if (Modules.OsChecker() == "windows")
-                Modules.Logo("solire.txt");
-            else
+            if (Modules.OsChecker() == "linux")
                 Modules.Logo("rick.txt");
-
+                
             Modules.Logo("SUIAP.txt");
             menu.MainMenu();
             
