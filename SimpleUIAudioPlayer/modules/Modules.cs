@@ -16,5 +16,18 @@ namespace Dotnet
             FileInfo logofile = new FileInfo(dirPath + Path.DirectorySeparatorChar + logoname);
             Console.WriteLine(WorkerFiles.ReadFile(logofile, false));
         }
+
+        public static string OsChecker()
+        {
+            if (OperatingSystem.IsWindows())
+                return "windows";
+            else if (OperatingSystem.IsLinux())
+                return "linux";
+            else if (OperatingSystem.IsAndroid())
+                return "android";
+            else
+                return ("uknown system");
+        }
+
     }
 }
