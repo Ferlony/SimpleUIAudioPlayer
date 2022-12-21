@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Dotnet
 {
-    internal partial class Modules
+    public partial class Modules
     {
         public static void Logo(string logoname)
         {
