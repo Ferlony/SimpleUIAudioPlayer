@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ju7gVuWZxL7W7DYeCkipSbJmtjX9Ge4pU0CnlAsSNCSmfokE0o/ugF618Bcdo5DKSrSqnKA5FOhnUU/m/I4+mQ==",
+  "success": true,
+  "projectFilePath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/PlayerProj.csproj",
+  "expectedPackageFiles": [
+    "/home/theuser/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.9/microsoft.aspnetcore.app.ref.6.0.9.nupkg.sha512",
+    "/home/theuser/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.9/microsoft.netcore.app.host.linux-x64.6.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

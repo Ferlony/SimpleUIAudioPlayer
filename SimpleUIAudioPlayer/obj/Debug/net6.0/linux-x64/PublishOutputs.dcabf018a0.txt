@@ -1,0 +1,7 @@
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/bin/Debug/net6.0/linux-x64/publish/PlayerProj
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/bin/Debug/net6.0/linux-x64/publish/PlayerProj.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/bin/Debug/net6.0/linux-x64/publish/PlayerProj.deps.json
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/bin/Debug/net6.0/linux-x64/publish/PlayerProj.runtimeconfig.json
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/bin/Debug/net6.0/linux-x64/publish/PlayerProj.pdb
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/bin/Debug/net6.0/linux-x64/publish/irrKlang.NET4.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/bin/Debug/net6.0/linux-x64/publish/ProgressBarModulLib.dll
