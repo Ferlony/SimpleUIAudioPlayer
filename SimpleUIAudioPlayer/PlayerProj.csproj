@@ -7,9 +7,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-  <Reference Include="IrrKlang">
-    <HintPath>./modules/libs/irrKlang.NET4.dll</HintPath>
-    <SpecificVersion>False</SpecificVersion>
-  </Reference>
+    <Reference Include="IrrKlang">
+      <HintPath>./modules/libs/irrKlang.NET4.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ProgressBarModulLib">
+      <HintPath>./modules/libs/ProgressBarModulLib.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
   </ItemGroup>
 </Project>
