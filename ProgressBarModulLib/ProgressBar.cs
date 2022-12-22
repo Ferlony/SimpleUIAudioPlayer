@@ -64,50 +64,50 @@ public class ProgressBar
         return (arg / 60000).ToString() + "." + ((arg % 60000) / 1000).ToString();
     }
 
-    internal static void DeleteFile(FileInfo file)
-    {
-        if (file.Exists)
-        {
-            Console.WriteLine(file.FullName);
-            file.Delete();
-            Console.WriteLine($"Файл {file.Name} успешно удален");
-        }
-        else
-        {
-            Console.WriteLine($"Файл {file.Name} не существует");
-        }
-    }
+    //internal static void DeleteFile(FileInfo file)
+    //{
+    //    if (file.Exists)
+    //    {
+    //        Console.WriteLine(file.FullName);
+    //        file.Delete();
+    //        Console.WriteLine($"Файл {file.Name} успешно удален");
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine($"Файл {file.Name} не существует");
+    //    }
+    //}
 
-    internal static void CreateFile(FileInfo file)
-    {
-        if (file.Exists)
-        {
-            Console.WriteLine($"Файл {file.Name} уже существует");
-        }
-        else
-        {
-            Console.WriteLine(file.FullName);
-            file.Create().Dispose();
-            Console.WriteLine($"Файл {file.Name} создан");
-        }
-    }
+    //internal static void CreateFile(FileInfo file)
+    //{
+    //    if (file.Exists)
+    //    {
+    //        Console.WriteLine($"Файл {file.Name} уже существует");
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine(file.FullName);
+    //        file.Create().Dispose();
+    //        Console.WriteLine($"Файл {file.Name} создан");
+    //    }
+    //}
 
-    public static FileInfo ProgressBarCreateFile()
-    {
+    //public static FileInfo ProgressBarCreateFile()
+    //{
         
-        string filePath = @$".{Path.DirectorySeparatorChar}modules{Path.DirectorySeparatorChar}progbar.txt";
-        FileInfo file = new FileInfo(filePath);
-        try
-        {
-            DeleteFile(file);
-        }
-        catch
-        {
-            Console.Write("");
-        }
-        CreateFile(file);
-        return file;
+    //    string filePath = @$".{Path.DirectorySeparatorChar}modules{Path.DirectorySeparatorChar}progbar.txt";
+    //    FileInfo file = new FileInfo(filePath);
+    //    try
+    //    {
+    //        DeleteFile(file);
+    //    }
+    //    catch
+    //    {
+    //        Console.Write("");
+    //    }
+    //    CreateFile(file);
+    //    return file;
 
         
-    }
+    //}
 }

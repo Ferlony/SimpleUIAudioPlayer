@@ -10,3 +10,10 @@
 /home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Debug/net6.0/ProgressBarModulLib.dll
 /home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Debug/net6.0/ref/ProgressBarModulLib.dll
 /home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Debug/net6.0/ProgressBarModulLib.pdb
+C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBarModulLib\obj\Debug\net6.0\ProgressBarModulLib.csproj.AssemblyReference.cache
+C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBarModulLib\obj\Debug\net6.0\ProgressBarModulLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBarModulLib\obj\Debug\net6.0\ProgressBarModulLib.AssemblyInfoInputs.cache
+C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBarModulLib\obj\Debug\net6.0\ProgressBarModulLib.AssemblyInfo.cs
+C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBarModulLib\obj\Debug\net6.0\ProgressBarModulLib.csproj.CoreCompileInputs.cache
+C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBarModulLib\obj\Debug\net6.0\ProgressBarModulLib.dll
+C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBarModulLib\obj\Debug\net6.0\ProgressBarModulLib.pdb
