@@ -1,3 +1,0 @@
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/bin/Release/net6.0/publish/ProgressBarModulLib.dll
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/bin/Release/net6.0/publish/ProgressBarModulLib.deps.json
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/bin/Release/net6.0/publish/ProgressBarModulLib.pdb
