@@ -1,5 +1,0 @@
-C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBar\bin\Release\net6.0\publish\test.exe
-C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBar\bin\Release\net6.0\publish\test.dll
-C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBar\bin\Release\net6.0\publish\test.deps.json
-C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBar\bin\Release\net6.0\publish\test.runtimeconfig.json
-C:\Users\panas\Downloads\SimpleUIAudioPlayer-main\SimpleUIAudioPlayer-main\ProgressBar\bin\Release\net6.0\publish\test.pdb
