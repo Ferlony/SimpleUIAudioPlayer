@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "u/CcdidOAdF8uh4XVrlNLboyyNqmgTvpV0IkaphP3CmzcWEKf+LIzBjynYnTrp39vkrW1CSu7OQ87QvEK3OSDw==",
+  "success": true,
+  "projectFilePath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/ProgressBarModulLib.csproj",
+  "expectedPackageFiles": [
+    "/home/theuser/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.9/microsoft.aspnetcore.app.ref.6.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

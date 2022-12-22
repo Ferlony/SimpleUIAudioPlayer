@@ -1,0 +1,15 @@
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/obj/Debug/net6.0/linux-x64/Timer.csproj.AssemblyReference.cache
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/obj/Debug/net6.0/linux-x64/Timer.GeneratedMSBuildEditorConfig.editorconfig
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/obj/Debug/net6.0/linux-x64/Timer.AssemblyInfoInputs.cache
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/obj/Debug/net6.0/linux-x64/Timer.AssemblyInfo.cs
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/obj/Debug/net6.0/linux-x64/Timer.csproj.CoreCompileInputs.cache
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/Timer
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/Timer.deps.json
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/Timer.runtimeconfig.json
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/Timer.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/ref/Timer.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/Timer.pdb
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/obj/Debug/net6.0/linux-x64/Timer.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/obj/Debug/net6.0/linux-x64/ref/Timer.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/obj/Debug/net6.0/linux-x64/Timer.pdb
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/obj/Debug/net6.0/linux-x64/Timer.genruntimeconfig.cache
