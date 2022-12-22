@@ -1,5 +1,0 @@
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/publish/Timer
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/publish/Timer.dll
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/publish/Timer.deps.json
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/publish/Timer.runtimeconfig.json
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/publish/Timer.pdb
