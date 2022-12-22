@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading;
 using System.Collections;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -25,6 +26,7 @@ namespace Dotnet
         // Или же полностью равносильный запрос, только более понятный человеку
         // suiap --play someplaylist
         //
+        public static Mutex mtx = new Mutex();
         public static void Main(string[] args)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
@@ -34,7 +36,12 @@ namespace Dotnet
                 Modules.Logo("rick.txt");
                 
             Modules.Logo("SUIAP.txt");
-            menu.MainMenu();
+
+            Thread menuThr = new Thread(menu.MainMenu);
+
+           
+
+            menuThr.Start();
             
         }
     }
