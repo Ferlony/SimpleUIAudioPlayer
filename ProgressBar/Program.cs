@@ -25,7 +25,7 @@ namespace Dotnet
         }
         public static void Main(string[] args)
         {
-            string filePath = @$"..{Path.DirectorySeparatorChar}progbar.txt";
+            string filePath = "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer\\modules\\progbar.txt";
             FileInfo file = new FileInfo(filePath);
 
             Console.Write(ReadFile(file, false));
