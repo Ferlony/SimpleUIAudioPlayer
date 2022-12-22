@@ -12,9 +12,11 @@ namespace Dotnet
     {
         private static List<string> currentPlaylist = new List<string>();
         private static List<string> currentPlaylistAllSongs = new List<string>();
-        private static string currentPlaylistSongsNames = null;
+        private static List<string> currentPlaylistSongsNames = new List<string>();
         private static string currentPlaylistName = null;
         private static int currentPlaylistSongIndex = 0;
+        public static Semaphore sem = new Semaphore(1, 1);
+        public static bool isReleased = false;
 
         public string CurrentPlaylistName
         {
@@ -23,6 +25,7 @@ namespace Dotnet
                 currentPlaylistName = value;
                 currentPlaylist = AWorkerDB.GetFilesFromDB(currentPlaylistName);
                 currentPlaylistAllSongs = AWorkerDB.GetListFilesFromDB(currentPlaylist, "filepath");
+                currentPlaylistSongsNames = AWorkerDB.GetListFilesFromDB(currentPlaylist, "fileName");
                 currentPlaylistSongIndex = 0;
             }
         }
@@ -31,7 +34,7 @@ namespace Dotnet
         public void PlayAllSongsInPlaylist()
         {
             Play(currentPlaylistAllSongs[currentPlaylistSongIndex]);
-            CurrentSongLength();
+            CurrentSongInfo();
             currentPlaylistSongIndex++;
             while (true)
             {
@@ -44,21 +47,23 @@ namespace Dotnet
                     if(music.Finished)
                     {
                         Play(currentPlaylistAllSongs[currentPlaylistSongIndex]);
-                        CurrentSongLength();
+                        CurrentSongInfo();
                         currentPlaylistSongIndex++;
                     }
                 }
             }
         }
-        private static void CurrentSongLength()
+        private static void CurrentSongInfo()
         {
-            lock(Menus.obj)
-            {
-                Console.Write("Продолжительность трека: ");
-                Console.Write(music.PlayLength / 60000);
-                Console.Write(":");
-                Console.WriteLine((music.PlayLength % 60000) / 1000);
-            }
+            //sem.WaitOne();
+            Console.Write("Название трека: ");
+            Console.WriteLine(currentPlaylistSongsNames[currentPlaylistSongIndex]);
+            Console.Write("Продолжительность трека: ");
+            Console.Write(music.PlayLength / 60000);
+            Console.Write(":");
+            Console.WriteLine((music.PlayLength % 60000) / 1000);
+            sem.Release();
+            isReleased = true;
         }
         public static void CurrentSongProgressBar()
         {

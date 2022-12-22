@@ -12,6 +12,8 @@ namespace Dotnet
     public class Menus: IMenus
     {
         public static object obj = new object();
+        Mutex mut = new Mutex();
+
         public void MainMenu()
         {
             string a;
@@ -72,9 +74,9 @@ namespace Dotnet
                                     mp.Kill();
                                     break;
                                 }
+                                Console.WriteLine(bar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, true));
                             }
                             
-                            //Console.WriteLine("аааааа");
                         break;
                     }
                     case "0":
@@ -107,19 +109,19 @@ namespace Dotnet
 
             while (flag)
             {
-                lock (obj)
-                {
-                    Console.WriteLine(
-                        "'1' Проиграть плейлист\n" +
-                        "'2' Пауза\n" +
-                        "'3' Воспроизвести\n" +
-                        "'4' Настроить громкость\n" +
-                        "'5' Перемотать\n" +
-                        "'6' Начать заново\n" +
-                        "'7' Следующий трек\n" +
-                        "'8' Прогресс текущего трека\n" +
-                        "'0' Выйти из меню");
-                }
+                
+                WorkerPlayer.sem.WaitOne();
+                Console.WriteLine(
+                    "'1' Проиграть плейлист\n" +
+                    "'2' Пауза\n" +
+                    "'3' Воспроизвести\n" +
+                    "'4' Настроить громкость\n" +
+                    "'5' Перемотать\n" +
+                    "'6' Начать заново\n" +
+                    "'7' Следующий трек\n" +
+                    "'8' Прогресс текущего трека\n" +
+                    "'0' Выйти из меню");
+                WorkerPlayer.isReleased = false;
                 a = Console.ReadLine();
                 switch (a)
                 {
@@ -130,18 +132,30 @@ namespace Dotnet
                         }
                     case "2":
                         {
+                            if (WorkerPlayer.isReleased == false)
+                            {
+                                WorkerPlayer.sem.Release();
+                            }
                             WorkerPlayer.Stop();
                             Console.WriteLine("Трек остановлен");
                             break;
                         }
                     case "3":
                         {
+                            if (WorkerPlayer.isReleased == false)
+                            {
+                                WorkerPlayer.sem.Release();
+                            }
                             WorkerPlayer.Continue();
                             Console.WriteLine("Трек воспроизведен");
                             break;
                         }
                     case "4":
                         {
+                            if (WorkerPlayer.isReleased == false)
+                            {
+                                WorkerPlayer.sem.Release();
+                            }
                             Console.WriteLine("Выберите громкость");
                             int volume = Convert.ToInt32(Console.ReadLine());
                             WorkerPlayer.Volume(volume);
@@ -149,37 +163,89 @@ namespace Dotnet
                         }
                     case "5":
                         {
-                            Console.WriteLine("Введите количество секунд");
-                            int time = Convert.ToInt32(Console.ReadLine());
-                            WorkerPlayer.Rewind(time);
+                            if (WorkerPlayer.isReleased == false)
+                            {
+                                WorkerPlayer.sem.Release();
+                            }
+                            try
+                            {
+                                Console.WriteLine("Введите количество секунд");
+                                int time = Convert.ToInt32(Console.ReadLine());
+                                WorkerPlayer.Rewind(time);
+                            }
+                            catch (NullReferenceException ex)
+                            {
+                                Console.WriteLine("Трек не был запущен");
+                            }
                             break;
                         }
                     case "6":
                         {
-                            WorkerPlayer.Restart();
-                            Console.WriteLine("Трек воспроизведен заново");
+                            if (WorkerPlayer.isReleased == false)
+                            {
+                                WorkerPlayer.sem.Release();
+                            }
+                            try
+                            {
+                                WorkerPlayer.Restart();
+                                Console.WriteLine("Трек воспроизведен заново");
+                            }
+                            catch (NullReferenceException ex)
+                            {
+                                Console.WriteLine("Трек не был запущен");
+                            }
                             break;
                         }
                     case "7":
                         {
-                            WorkerPlayer.Next();
-                            Console.WriteLine("Воспроизведен следующий трек");
+                            if (WorkerPlayer.isReleased == false)
+                            {
+                                WorkerPlayer.sem.Release();
+                            }
+                            try
+                            { 
+                                WorkerPlayer.Next();
+                                Console.WriteLine("Воспроизведен следующий трек");
+                            }
+                            catch(NullReferenceException ex)
+                            {
+                                Console.WriteLine("Трек не был запущен");
+                            }
                             break;
                         }
                     case "8":
                         {
-                            Console.WriteLine("Прогресс текущего трека: ");
-                            WorkerPlayer.CurrentSongProgressBar();
+                            if (WorkerPlayer.isReleased == false)
+                            {
+                                WorkerPlayer.sem.Release();
+                            }
+                            try
+                            {
+                                Console.WriteLine("Прогресс текущего трека: ");
+                                WorkerPlayer.CurrentSongProgressBar();
+                            }
+                            catch (NullReferenceException ex)
+                            {
+                                Console.WriteLine("Трек не был запущен");
+                            }
                             break;
                         }
                     case "0":
                         {
+                            if (WorkerPlayer.isReleased == false)
+                            {
+                                WorkerPlayer.sem.Release();
+                            }
                             flag = false;
                             Console.WriteLine("Выход из программы");
                             break;
                         }
                     default:
                         {
+                            if (WorkerPlayer.isReleased == false)
+                            {
+                                WorkerPlayer.sem.Release();
+                            }
                             Console.WriteLine("Неверный ввод");
                             break;
                         }
@@ -271,7 +337,7 @@ namespace Dotnet
             {
                 Console.WriteLine(
                     "'1' Найти файл в плейлисте\n" +
-                    "'2' Найти файл во всех плейлистах\n" + // Еще не сделано
+                    "'2' Найти файл во всех плейлистах\n" + 
                     "'0' Выйти из меню");
                 a = Console.ReadLine();
                 switch (a)
@@ -550,7 +616,7 @@ namespace Dotnet
         {
             string a;
             bool flag = true;
-            string playlistName = "";//"ErrorNamePlayList";
+            string playlistName = "";
             while (flag)
             {
                 Console.WriteLine("Будет выбран последний выбранный или созданный плейлист\n" +
@@ -827,6 +893,10 @@ namespace Dotnet
             {
                 Console.WriteLine("Не был выбран плейлист");
             }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("Такого плейлиста не существует");
+            }
         }
 
         public void Menu_1_PlayFiles()
@@ -841,7 +911,19 @@ namespace Dotnet
             }
             catch (NoPlaylistChosenException ex)
             {
+                if (WorkerPlayer.isReleased == false)
+                {
+                    WorkerPlayer.sem.Release();
+                }
                 Console.WriteLine("Не был выбран плейлист");
+            }
+            catch (FileNotFoundException ex)
+            {
+                if (WorkerPlayer.isReleased == false)
+                {
+                    WorkerPlayer.sem.Release();
+                }
+                Console.WriteLine("Такого плейлиста не существует");
             }
         }
     }

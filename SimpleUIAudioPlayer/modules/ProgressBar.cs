@@ -56,18 +56,18 @@ namespace Dotnet
         //     }
         // }
 
-        public string DrawProgressBar(int currentLength, bool update=false)
+        public string DrawProgressBar(int currentLength, bool update = false)
         {
-            if(update)
-            {
-                //Console.Write(back);
-                ClearCurrentConsoleLine();
-            }
+            //if (update)
+            //{
+            //    //Console.Write(back);
+            //    ClearCurrentConsoleLine();
+            //}
 
             string bar = "";
             //Console.Write("[");
             bar += "[";
-            
+
             currentPosition = ((currentLength * barWidth) / maxLength);
 
             for (int i = 0; i < barWidth; i++)
@@ -95,10 +95,10 @@ namespace Dotnet
             int currentLineCursor = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.SetCursorPosition(0, Console.CursorLeft);
-            Console.Write(new string(' ', Console.WindowWidth)); 
+            Console.Write(new string(' ', Console.WindowWidth));
         }
-        
-        
+
+
         public static string[] TurnToMenute(int currentLength)
         {
             string[] arr = new string[2];
@@ -109,10 +109,10 @@ namespace Dotnet
 
         private static string MakeBeauty(int arg)
         {
-            return (arg / 60000).ToString() + "." + ((arg % 60000) / 1000 ).ToString();
+            return (arg / 60000).ToString() + "." + ((arg % 60000) / 1000).ToString();
         }
 
-        //public void string Create
+        
 
     }
 }
