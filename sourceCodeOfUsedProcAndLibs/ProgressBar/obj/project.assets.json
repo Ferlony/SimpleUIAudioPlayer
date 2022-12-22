@@ -1,0 +1,83 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {},
+    "net6.0/linux-x64": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net6.0": []
+  },
+  "packageFolders": {
+    "/home/theuser/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBar/test.csproj",
+      "projectName": "test",
+      "projectPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBar/test.csproj",
+      "packagesPath": "/home/theuser/.nuget/packages/",
+      "outputPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBar/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/theuser/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "/home/theuser/Programms/Cs/Packages/": {},
+        "/home/theuser/Programms/Cs/Packages/libIrrKlang.so": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.9, 6.0.9]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.linux-x64",
+            "version": "[6.0.9, 6.0.9]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.109/RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "linux-x64": {
+        "#import": []
+      }
+    }
+  }
+}
