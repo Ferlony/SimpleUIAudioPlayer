@@ -1,5 +1,0 @@
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test.dll
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test.deps.json
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test.runtimeconfig.json
-/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test.pdb
