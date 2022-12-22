@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProgressBarModulLib;
 
 namespace Dotnet
 {
@@ -55,10 +56,9 @@ namespace Dotnet
         }
         private static void CurrentSongInfo()
         {
-            //sem.WaitOne();
-            Console.Write("�������� �����: ");
+            Console.Write("Текущий трек: ");
             Console.WriteLine(currentPlaylistSongsNames[currentPlaylistSongIndex]);
-            Console.Write("����������������� �����: ");
+            Console.Write("Продолжительность трека: ");
             Console.Write(music.PlayLength / 60000);
             Console.Write(":");
             Console.WriteLine((music.PlayLength % 60000) / 1000);
@@ -67,8 +67,6 @@ namespace Dotnet
         }
         public static void CurrentSongProgressBar()
         {
-            //ProgressBar bar = new ProgressBar();
-            //bar.MaxLength = (int)WorkerPlayer.music.PlayLength;
             Console.WriteLine(ProgressBar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, (int)WorkerPlayer.music.PlayLength, true));
         }
     }

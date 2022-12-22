@@ -4,7 +4,7 @@ using System.Threading;
 using System.Collections;
 using System.Linq;
 using System.Text;
-
+using ProgressBarModulLib;
 
 namespace Dotnet
 {
@@ -32,14 +32,14 @@ namespace Dotnet
 
         public static void threader()
         {
-            FileInfo file = ProgressBar.ProgressBarCreateFile();
+            FileInfo file = new FileInfo("C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer\\modules\\progbar.txt");
             int counter = 0;
             int N = (int)WorkerPlayer.music.PlayLength;
             for (int i = (int)WorkerPlayer.music.PlayPosition; i<= N;)
             {
                 WorkerFiles.WriteFile(file, ProgressBar.DrawProgressBar(i, N, true), false);
                 counter++;
-                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - counter);
+                //Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - counter);
                 counter = 0;
             }
         }

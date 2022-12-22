@@ -12,7 +12,6 @@ namespace Dotnet
     public class Menus: IMenus
     {
         public static object obj = new object();
-        Mutex mut = new Mutex();
         // Process timerProc = new Process();
         // timerProc.StartInfo.FileName = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/publish/Timer";
         // timerProc.StartInfo.UseShellExecute = false;
@@ -109,19 +108,24 @@ namespace Dotnet
 
                             break;
                         }
-                        else
+                        else 
                         {
-                            break;
-                        }
-                        
-                    }
+                                Process process = new Process();
+                                process.StartInfo.UseShellExecute = true;
+                                process.StartInfo.FileName = "cmd.exe";
+                                process.StartInfo.CreateNoWindow = false;
+                                process.StartInfo.Arguments = "/k C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer\\modules\\ProgressBar\\test.exe";
+                                //process.StartInfo.Arguments = "/k .\\modules\\ProgressBar\\test.exe";
+                                //"/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test"
+                                process.Start();
+                                // process.Kill();
 
-                    // case "time":
-                    // {
-                    //     Console.WriteLine("Time");
-                    //     break;
-                    // }
-                    
+                                Thread thr = new Thread(Modules.threader);
+                                thr.Start();
+
+                                break;
+                            }
+                    }
                     case "0":
                     {
                         flag = false;
