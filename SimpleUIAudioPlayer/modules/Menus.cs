@@ -65,41 +65,57 @@ namespace Dotnet
                     }
                     case "t":
                     {
-                            Process mp = new Process();
-                            ProgressBar bar = new ProgressBar();
-                            bar.MaxLength = (int)WorkerPlayer.music.PlayLength;
-                            mp.StartInfo.UseShellExecute = true;
-                            mp.StartInfo.FileName = "cmd.exe";
-                            mp.StartInfo.Arguments = @"/k echo" + bar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, true);
-                            mp.StartInfo.CreateNoWindow = false;
-                            mp.Start();
-                            int ID = mp.Id;
-                            while (true)
-                            {
-                                if (WorkerPlayer.music.Finished)
-                                {
-                                    mp.Kill();
-                                    break;
-                                }
-                                Console.WriteLine(bar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, true));
-                            }
+
+                        // if (Modules.OsChecker() == "windows")
+                        // {
+
+                        //     Process mp = new Process();
+                        //     ProgressBar bar = new ProgressBar();
+                        //     bar.MaxLength = (int)WorkerPlayer.music.PlayLength;
+                        //     mp.StartInfo.UseShellExecute = true;
+                        //     mp.StartInfo.FileName = "cmd.exe";
+                        //     mp.StartInfo.Arguments = @"/k echo" + bar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, true);
+                        //     mp.StartInfo.CreateNoWindow = false;
+                        //     mp.Start();
+                        //     int ID = mp.Id;
+                        //     while (true)
+                        //     {
+                        //         if (WorkerPlayer.music.Finished)
+                        //         {
+                        //             mp.Kill();
+                        //             break;
+                        //         }
+                        //         Console.WriteLine(bar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, true));
+                        //     }
+                        //     break;
+                        // }
+                        // else
+                        // {
+                        //     break;
+                        // }
+                        if (Modules.OsChecker() == "linux")
+                        {
+                            Process process = new Process();
+                            process.StartInfo.UseShellExecute = true;
+                            process.StartInfo.FileName="/usr/bin/konsole";
+                            process.StartInfo.CreateNoWindow = false;
+                            process.StartInfo.Arguments = "-e ./modules/ProgressBar/./test";
+                            //"/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test"
+                            process.Start();
+                            // process.Kill();
                             
-                        break;
+                            Thread thr = new Thread(Modules.threader);
+                            thr.Start();
+
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        
                     }
-                    case "tt":
-                    {
-                        Process process = new Process();
-                        process.StartInfo.UseShellExecute = true;
-                        process.StartInfo.FileName="/usr/bin/konsole";
-                        process.StartInfo.CreateNoWindow = false;
-                        process.StartInfo.Arguments = "-e /home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test";
-                        //"/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test"
-                        process.Start();
-                        // process.Kill();
-                        Thread thread = new Thread(Modules.threader);
-                        thread.Start();
-                        break;
-                    }
+
                     // case "time":
                     // {
                     //     Console.WriteLine("Time");

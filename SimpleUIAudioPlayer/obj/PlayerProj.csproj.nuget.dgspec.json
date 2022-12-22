@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/PlayerProj.csproj": {}
+    "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/PlayerProj.csproj": {}
   },
   "projects": {
-    "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/PlayerProj.csproj": {
+    "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/PlayerProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/PlayerProj.csproj",
+        "projectUniqueName": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/PlayerProj.csproj",
         "projectName": "PlayerProj",
-        "projectPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/PlayerProj.csproj",
+        "projectPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/PlayerProj.csproj",
         "packagesPath": "/home/theuser/.nuget/packages/",
-        "outputPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/obj/",
+        "outputPath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/theuser/.nuget/NuGet/NuGet.Config"

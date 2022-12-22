@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MH5/MVtyN9FNvDRBmWiaeasFsAredV7gigSLT5BqvfNxiRYDRDLj1BFY84aUmLiGOo84sdb8A7aINI/LzahX6Q==",
+  "dgSpecHash": "i7oOF0dbXtSsfdKiWxm7r7Cefwyq68OsGNX5m8sHxS6LlCyyH2uZ51JcuSMGxVcx5X18ebt08jxRU61NnfUrJQ==",
   "success": true,
-  "projectFilePath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer/SimpleUIAudioPlayer/PlayerProj.csproj",
+  "projectFilePath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/SimpleUIAudioPlayer/PlayerProj.csproj",
   "expectedPackageFiles": [
     "/home/theuser/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.9/microsoft.aspnetcore.app.ref.6.0.9.nupkg.sha512"
   ],

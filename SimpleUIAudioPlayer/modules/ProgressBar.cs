@@ -10,15 +10,12 @@ namespace Dotnet
 {
     public class ProgressBar
     {
-        //private int progress = 0;
-        private static int maxLength = 0;
         private static int barWidth = 20;
 
-        //private string back = "\b\b\b\b\b\b\b\b\b\b\b"; 
-        private string back = "\n";
-        private string block = "#";
-        private string blockempt = "=";
-        private int currentPosition = 0;
+        private static string back = "\n";
+        private static string block = "#";
+        private static string blockempt = "=";
+        private static int currentPosition = 0;
 
         public int CurrentPosition
         {
@@ -32,40 +29,10 @@ namespace Dotnet
             }
         }
 
-        public int MaxLength
+
+        public static string DrawProgressBar(int currentLength, int maxLength, bool update = false)
         {
-            get
-            {
-                return maxLength;
-            }
-            set
-            {
-                maxLength = value;
-            }
-        }
-
-        // public int Progress
-        // {
-        //     get
-        //     {
-        //         return progress;
-        //     }
-        //     set
-        //     {
-        //         progress = value;
-        //     }
-        // }
-
-        public string DrawProgressBar(int currentLength, bool update = false)
-        {
-            //if (update)
-            //{
-            //    //Console.Write(back);
-            //    ClearCurrentConsoleLine();
-            //}
-
             string bar = "";
-            //Console.Write("[");
             bar += "[";
 
             currentPosition = ((currentLength * barWidth) / maxLength);
@@ -74,19 +41,15 @@ namespace Dotnet
             {
                 if (i > currentPosition)
                 {
-                    //Console.Write(blockempt);
                     bar += blockempt;
                 }
                 else
                 {
-                    //Console.Write(block);
                     bar += block;
                 }
             }
-            //progress++;
-            string[] arr = TurnToMenute(currentLength);
-            //Console.Write($"] {arr[0]} / {arr[1]}");
-            bar += $"] {arr[0]} / {arr[1]}";
+
+            bar += $"] {TurnToMenute(currentLength)} / {TurnToMenute(maxLength)}";
             return bar;
         }
 
@@ -99,12 +62,9 @@ namespace Dotnet
         }
 
 
-        public static string[] TurnToMenute(int currentLength)
+        public static string TurnToMenute(int length)
         {
-            string[] arr = new string[2];
-            arr[0] = MakeBeauty(currentLength);
-            arr[1] = MakeBeauty(maxLength);
-            return arr;
+            return MakeBeauty(length);
         }
 
         private static string MakeBeauty(int arg)
@@ -112,7 +72,23 @@ namespace Dotnet
             return (arg / 60000).ToString() + "." + ((arg % 60000) / 1000).ToString();
         }
 
-        
+        public static FileInfo ProgressBarCreateFile()
+        {
+            
+            string filePath = @$".{Path.DirectorySeparatorChar}modules{Path.DirectorySeparatorChar}progbar.txt";
+            FileInfo file = new FileInfo(filePath);
+            try
+            {
+                WorkerFiles.DeleteFile(file);
+            }
+            catch
+            {
+                Console.Write("");
+            }
+            WorkerFiles.CreateFile(file);
+            return file;
 
+            
+        }
     }
 }

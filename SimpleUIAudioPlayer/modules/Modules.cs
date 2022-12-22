@@ -30,32 +30,20 @@ namespace Dotnet
                 return ("uknown system");
         }
 
-        public async static void threader()
+        public static void threader()
         {
-            int N = 100000;
-            ProgressBar bar = new ProgressBar();
-            bar.MaxLength = N;
-            string filePath = "./progbar.txt";
-            FileInfo file = new FileInfo(filePath);
-            try
-            {
-                WorkerFiles.DeleteFile(file);
-            }
-            catch
-            {
-                Console.Write("");
-            }
-            WorkerFiles.CreateFile(file);
-
+            FileInfo file = ProgressBar.ProgressBarCreateFile();
             int counter = 0;
-            for (int i = 10000;i <= N; i++)
+            int N = (int)WorkerPlayer.music.PlayLength;
+            for (int i = (int)WorkerPlayer.music.PlayPosition; i<= N;)
             {
-                WorkerFiles.WriteFile(file, bar.DrawProgressBar(i, true), false);
+                WorkerFiles.WriteFile(file, ProgressBar.DrawProgressBar(i, N, true), false);
                 counter++;
                 Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - counter);
                 counter = 0;
             }
         }
+        
 
     }
 }

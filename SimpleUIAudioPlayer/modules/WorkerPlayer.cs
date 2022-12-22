@@ -56,9 +56,9 @@ namespace Dotnet
         private static void CurrentSongInfo()
         {
             //sem.WaitOne();
-            Console.Write("Название трека: ");
+            Console.Write("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: ");
             Console.WriteLine(currentPlaylistSongsNames[currentPlaylistSongIndex]);
-            Console.Write("Продолжительность трека: ");
+            Console.Write("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: ");
             Console.Write(music.PlayLength / 60000);
             Console.Write(":");
             Console.WriteLine((music.PlayLength % 60000) / 1000);
@@ -67,9 +67,9 @@ namespace Dotnet
         }
         public static void CurrentSongProgressBar()
         {
-            ProgressBar bar = new ProgressBar();
-            bar.MaxLength = (int)WorkerPlayer.music.PlayLength;
-            Console.WriteLine(bar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, true));
+            //ProgressBar bar = new ProgressBar();
+            //bar.MaxLength = (int)WorkerPlayer.music.PlayLength;
+            Console.WriteLine(ProgressBar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, (int)WorkerPlayer.music.PlayLength, true));
         }
     }
 }
