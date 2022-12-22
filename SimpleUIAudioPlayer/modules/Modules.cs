@@ -5,6 +5,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 
+
 namespace Dotnet
 {
     public partial class Modules
@@ -27,6 +28,33 @@ namespace Dotnet
                 return "android";
             else
                 return ("uknown system");
+        }
+
+        public async static void threader()
+        {
+            int N = 100000;
+            ProgressBar bar = new ProgressBar();
+            bar.MaxLength = N;
+            string filePath = "./progbar.txt";
+            FileInfo file = new FileInfo(filePath);
+            try
+            {
+                WorkerFiles.DeleteFile(file);
+            }
+            catch
+            {
+                Console.Write("");
+            }
+            WorkerFiles.CreateFile(file);
+
+            int counter = 0;
+            for (int i = 10000;i <= N; i++)
+            {
+                WorkerFiles.WriteFile(file, bar.DrawProgressBar(i, true), false);
+                counter++;
+                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - counter);
+                counter = 0;
+            }
         }
 
     }

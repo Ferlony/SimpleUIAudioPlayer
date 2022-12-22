@@ -13,6 +13,13 @@ namespace Dotnet
     {
         public static object obj = new object();
         Mutex mut = new Mutex();
+        // Process timerProc = new Process();
+        // timerProc.StartInfo.FileName = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/publish/Timer";
+        // timerProc.StartInfo.UseShellExecute = false;
+        // timerProc.StartInfo.RedirectStandardOutput = true;
+        // timerProc.Start();
+        // StreamReader timerProcReader = timerProc.StandardOutput;
+        // string output = timerProcReader.ReadToEnd();
 
         public void MainMenu()
         {
@@ -79,6 +86,26 @@ namespace Dotnet
                             
                         break;
                     }
+                    case "tt":
+                    {
+                        Process process = new Process();
+                        process.StartInfo.UseShellExecute = true;
+                        process.StartInfo.FileName="/usr/bin/konsole";
+                        process.StartInfo.CreateNoWindow = false;
+                        process.StartInfo.Arguments = "-e /home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test";
+                        //"/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/test/bin/Debug/net6.0/linux-x64/publish/test"
+                        process.Start();
+                        // process.Kill();
+                        Thread thread = new Thread(Modules.threader);
+                        thread.Start();
+                        break;
+                    }
+                    // case "time":
+                    // {
+                    //     Console.WriteLine("Time");
+                    //     break;
+                    // }
+                    
                     case "0":
                     {
                         flag = false;

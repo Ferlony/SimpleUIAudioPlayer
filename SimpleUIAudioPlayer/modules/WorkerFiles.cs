@@ -52,14 +52,14 @@ namespace Dotnet
             }
         }
 
-        internal static void WriteFile(FileInfo file, string text, bool writeToEndFlag=true)
+        internal async static void WriteFile(FileInfo file, string text, bool writeToEndFlag=true)
         {
 
             string path = file.FullName;
             StreamWriter writer = new StreamWriter(path, writeToEndFlag, Encoding.UTF8);
             writer.WriteLine(text);
             writer.Close();
-            Console.WriteLine($"Текст записан в {file}");
+            //Console.WriteLine($"Текст записан в {file}");
         }
 
         internal static void WriteFileJSON(FileInfo file, string text)
