@@ -1,0 +1,12 @@
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/bin/Release/net6.0/ProgressBarModulLib.deps.json
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/bin/Release/net6.0/ProgressBarModulLib.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/bin/Release/net6.0/ref/ProgressBarModulLib.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/bin/Release/net6.0/ProgressBarModulLib.pdb
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Release/net6.0/ProgressBarModulLib.csproj.AssemblyReference.cache
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Release/net6.0/ProgressBarModulLib.GeneratedMSBuildEditorConfig.editorconfig
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Release/net6.0/ProgressBarModulLib.AssemblyInfoInputs.cache
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Release/net6.0/ProgressBarModulLib.AssemblyInfo.cs
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Release/net6.0/ProgressBarModulLib.csproj.CoreCompileInputs.cache
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Release/net6.0/ProgressBarModulLib.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Release/net6.0/ref/ProgressBarModulLib.dll
+/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBarModulLib/obj/Release/net6.0/ProgressBarModulLib.pdb
