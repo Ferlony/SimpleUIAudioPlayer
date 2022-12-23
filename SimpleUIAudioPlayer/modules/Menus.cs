@@ -107,20 +107,36 @@ namespace Dotnet
                     }
                     case "d":
                     {
-                        Process process = new Process();
-                        process.StartInfo.UseShellExecute = true;
-                        process.StartInfo.FileName="/usr/bin/konsole";
-                        process.StartInfo.CreateNoWindow = false;
-                        string procPath = "./modules/ProgressBar/linux/test";
-                        process.StartInfo.Arguments = ("-e " + procPath);
-                        process.Start();
-                        PID = process.Id;
-
-                        
-                        Thread thr = new Thread(Modules.DrawerExample);
-                        thr.Start();
+                        if (Modules.OsChecker() == "linux")
+                        {
+                            Process process = new Process();
+                            process.StartInfo.UseShellExecute = true;
+                            process.StartInfo.FileName = "/usr/bin/konsole";
+                            process.StartInfo.CreateNoWindow = false;
+                            string procPath = "./modules/ProgressBar/linux/test";
+                            process.StartInfo.Arguments = ("-e " + procPath);
+                            process.Start();
+                            PID = process.Id;
+                            Thread thr = new Thread(Modules.DrawerExample);
+                            thr.Start();
+                            break;
+                        }
+                        else if (Modules.OsChecker() == "windows")
+                        {
+                                Process process = new Process();
+                                process.StartInfo.UseShellExecute = true;
+                                process.StartInfo.FileName = "cmd.exe";
+                                process.StartInfo.CreateNoWindow = false;
+                                string procPath = @".\modules\ProgressBar\windows\test.exe";
+                                process.StartInfo.Arguments = "/k " + procPath;
+                                process.Start();
+                                PID = process.Id;
+                                Thread thr = new Thread(Modules.DrawerExample);
+                                thr.Start();
+                                break;
+                               
+                        }
                         break;
-
                     }
                     case "0":
                     {
