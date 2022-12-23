@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\ProgressBarModulLib\\ProgressBarModulLib.csproj": {}
+    "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\sourceCodeOfUsedProcAndLibs\\ProgressBarModulLib\\ProgressBarModulLib.csproj": {}
   },
   "projects": {
-    "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\ProgressBarModulLib\\ProgressBarModulLib.csproj": {
+    "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\sourceCodeOfUsedProcAndLibs\\ProgressBarModulLib\\ProgressBarModulLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\ProgressBarModulLib\\ProgressBarModulLib.csproj",
+        "projectUniqueName": "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\sourceCodeOfUsedProcAndLibs\\ProgressBarModulLib\\ProgressBarModulLib.csproj",
         "projectName": "ProgressBarModulLib",
-        "projectPath": "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\ProgressBarModulLib\\ProgressBarModulLib.csproj",
+        "projectPath": "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\sourceCodeOfUsedProcAndLibs\\ProgressBarModulLib\\ProgressBarModulLib.csproj",
         "packagesPath": "C:\\Users\\panas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\ProgressBarModulLib\\obj\\",
+        "outputPath": "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\sourceCodeOfUsedProcAndLibs\\ProgressBarModulLib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Programs\\VS Packets\\NuGetPackages"
