@@ -11,18 +11,16 @@ namespace Dotnet
 {
     public class Menus: IMenus
     {
+
         public static object obj = new object();
-        // Process timerProc = new Process();
-        // timerProc.StartInfo.FileName = "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/Timer/bin/Debug/net6.0/linux-x64/publish/Timer";
-        // timerProc.StartInfo.UseShellExecute = false;
-        // timerProc.StartInfo.RedirectStandardOutput = true;
-        // timerProc.Start();
-        // StreamReader timerProcReader = timerProc.StandardOutput;
-        // string output = timerProcReader.ReadToEnd();
-
         public static int PID;
+        static public Mutex mtx;
 
-        
+        static Menus()
+        {
+            mtx = Mutex.OpenExisting("GlobalMutex");
+        }
+
         public void MainMenu()
         {
             string a;
@@ -36,6 +34,7 @@ namespace Dotnet
                     "'3' Добавить\n" +
                     "'4' Найти\n" +
                     "'5' Удалить\n" +
+                    "'6' Показать прогресс трека\n" +
                     "'0' Выйти из программы");
                 a = Console.ReadLine();
                 switch (a)
@@ -65,44 +64,36 @@ namespace Dotnet
                         MenuDeleter_5();
                         break;
                     }
-                    case "t":
+                    case "6":
                     {
-
                         if (Modules.OsChecker() == "linux")
                         {
                             Process process = new Process();
                             process.StartInfo.UseShellExecute = true;
-                            process.StartInfo.FileName="/usr/bin/konsole";
+                            process.StartInfo.FileName = "/usr/bin/konsole";
                             process.StartInfo.CreateNoWindow = false;
                             string procPath = "./modules/ProgressBar/linux/test";
                             process.StartInfo.Arguments = ("-e " + procPath);
                             process.Start();
                             PID = process.Id;
-
-                            
                             Thread thr = new Thread(Modules.Threader);
                             thr.Start();
                             break;
                         }
                         else if (Modules.OsChecker() == "windows")
                         {
-                                Process process = new Process();
-                                process.StartInfo.UseShellExecute = true;
-                                process.StartInfo.FileName = "cmd.exe";
-                                process.StartInfo.CreateNoWindow = false;
-                                //string absPath = "/k C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer\\modules\\ProgressBar\\test.exe"
-                                string procPath = @".\modules\ProgressBar\windows\test.exe";
-                                process.StartInfo.Arguments = "/k " + procPath;
-                                process.Start();
-                                PID = process.Id;
-
-
-                                Thread thr = new Thread(Modules.Threader);
-                                thr.Start();
-
-                                break;
+                            Process process = new Process();
+                            process.StartInfo.UseShellExecute = true;
+                            process.StartInfo.FileName = "cmd.exe";
+                            process.StartInfo.CreateNoWindow = false;
+                            string procPath = @".\modules\ProgressBar\windows\test.exe";
+                            process.StartInfo.Arguments = "/k " + procPath;
+                            process.Start();
+                            PID = process.Id;
+                            Thread thr = new Thread(Modules.Threader);
+                            thr.Start();
+                            break;
                         }
-
                         break;
                     }
                     case "d":
@@ -130,11 +121,10 @@ namespace Dotnet
                                 string procPath = @".\modules\ProgressBar\windows\test.exe";
                                 process.StartInfo.Arguments = "/k " + procPath;
                                 process.Start();
-                                PID = process.Id;
                                 Thread thr = new Thread(Modules.DrawerExample);
                                 thr.Start();
+                                PID = process.Id;
                                 break;
-                               
                         }
                         break;
                     }
@@ -142,8 +132,17 @@ namespace Dotnet
                     {
                         flag = false;
                         Console.WriteLine("Выход из программы");
-
-                        Modules.KillProcess(PID);
+                        if(Modules.OsChecker() == "linux")
+                        {
+                            Modules.KillProcess(PID);
+                        }
+                        else if (Modules.OsChecker() == "windows")
+                        {
+                            if (PID != 0)
+                            {
+                                Modules.KillProcess(PID);
+                            }
+                        }
                         Environment.Exit(0);
                         break;
                     }

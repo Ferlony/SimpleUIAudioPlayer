@@ -52,9 +52,8 @@ namespace Dotnet
             }
         }
 
-        internal async static void WriteFile(FileInfo file, string text, bool writeToEndFlag=true)
+        internal async static void WriteFile(FileInfo file, string text, bool writeToEndFlag = true)
         {
-
             string path = file.FullName;
             StreamWriter writer = new StreamWriter(path, writeToEndFlag, Encoding.UTF8);
             writer.WriteLine(text);

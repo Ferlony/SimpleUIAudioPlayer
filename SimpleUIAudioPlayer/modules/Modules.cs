@@ -11,6 +11,11 @@ namespace Dotnet
 {
     public partial class Modules
     {
+        public static Mutex mtx;
+        static Modules()
+        {
+            mtx = Mutex.OpenExisting("GlobalMutex");
+        }
         public static void Logo(string logoname)
         {
             string dirPath = @$".{Path.DirectorySeparatorChar}modules{Path.DirectorySeparatorChar}logos";
@@ -33,17 +38,25 @@ namespace Dotnet
 
         public static void Threader()
         {
-            //string absPath = "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer\\modules\\progbar.txt"
-            string filePath = $@".{Path.DirectorySeparatorChar}modules{Path.DirectorySeparatorChar}ProgressBar{Path.DirectorySeparatorChar}progbar.txt";
-            FileInfo file = new FileInfo(filePath);
-            int counter = 0;
-            int N = (int)WorkerPlayer.music.PlayLength;
-            for (int i = (int)WorkerPlayer.music.PlayPosition; i<= N;)
+            try
             {
-                WorkerFiles.WriteFile(file, ProgressBar.DrawProgressBar(i, N, true), false);
-                counter++;
-                //Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - counter);
-                counter = 0;
+                string filePath = $@".{Path.DirectorySeparatorChar}modules{Path.DirectorySeparatorChar}ProgressBar{Path.DirectorySeparatorChar}progbar.txt";
+                FileInfo file = new FileInfo(filePath);
+                int N = (int)WorkerPlayer.music.PlayLength;
+                while (WorkerPlayer.music.Finished != true)
+                {
+                    mtx.WaitOne();
+                    WorkerFiles.WriteFile(file, ProgressBar.DrawProgressBar((int)WorkerPlayer.music.PlayPosition, N, true), false);
+                    mtx.ReleaseMutex();
+                    if (WorkerPlayer.music.Finished)
+                    {
+                        break;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ошибка, трек не выбран");
             }
         }
 
@@ -66,14 +79,11 @@ namespace Dotnet
             string filePath = $@".{Path.DirectorySeparatorChar}modules{Path.DirectorySeparatorChar}ProgressBar{Path.DirectorySeparatorChar}progbar.txt";
             FileInfo file = new FileInfo(filePath);
             int N = 100000;
-            //int counter = 0;
-
-            for (int i = 50000; i <= N; i++)
+            for (int i = 1000; i <= N; i++)
             {
+                mtx.WaitOne();
                 WorkerFiles.WriteFile(file, ProgressBar.DrawProgressBar(i, N, true), false);
-                // counter++;
-                // Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - counter);
-                // counter = 0;
+                mtx.ReleaseMutex();
             }
         }
 
