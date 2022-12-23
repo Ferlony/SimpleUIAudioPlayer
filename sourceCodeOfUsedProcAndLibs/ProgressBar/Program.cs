@@ -9,17 +9,20 @@ namespace Dotnet
 {
     class Program
     {
-
-        internal static string ReadFile(FileInfo file, bool textflag=true)
+        public static Mutex mtx;
+        static Program()
+        {
+            mtx = Mutex.OpenExisting("GlobalMutex");
+        }
+        internal static string ReadFile(FileInfo file, bool textflag)
         {
             string path = file.FullName;
             StreamReader reader = new StreamReader(path, Encoding.UTF8);
-            string text = reader.ReadToEnd();
+            string text = reader.ReadLine();
             if (textflag)
             {
                 Console.WriteLine($"\nФайл {file.Name}");
             }
-            //Console.WriteLine(text);
             reader.Close();
             return text;
         }
@@ -27,16 +30,14 @@ namespace Dotnet
         {
             string filePath = $@".{Path.DirectorySeparatorChar}modules{Path.DirectorySeparatorChar}ProgressBar{Path.DirectorySeparatorChar}progbar.txt";
             FileInfo file = new FileInfo(filePath);
-
-            Console.Write(ReadFile(file, false));
-            
             while(true)
             {
+                mtx.WaitOne();
                 Console.Clear();
-                Console.Write(ReadFile(file, false));
-                Thread.Sleep(500);
+                Console.WriteLine(ReadFile(file, false));
+                mtx.ReleaseMutex();
+                Thread.Sleep(1000);
             }
-
         }
 
     }

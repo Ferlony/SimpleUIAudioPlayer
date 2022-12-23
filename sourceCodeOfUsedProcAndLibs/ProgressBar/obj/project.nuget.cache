@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dI/QDZIAFbzRkrYpUFG1GmWRhrn4E+n9VDW3NkSukHwpt9atEoCBbxl+TVKHVsN3TmkRfqdyqRPnMiC9tkZ+DA==",
+  "dgSpecHash": "cP0cRjTFAgNzEMBS3jhgZtv+XW77f7T/q9uiJXapRuawSBH0mMtwWpMiFpDFAbbz5Rayqw7IwXbneX4xOYf79Q==",
   "success": true,
-  "projectFilePath": "/home/theuser/Programms/Cs/SimpleUIAudioPlayer-main/ProgressBar/test.csproj",
-  "expectedPackageFiles": [
-    "/home/theuser/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.9/microsoft.aspnetcore.app.ref.6.0.9.nupkg.sha512",
-    "/home/theuser/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.9/microsoft.netcore.app.host.linux-x64.6.0.9.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\panas\\Downloads\\SimpleUIAudioPlayer-main\\SimpleUIAudioPlayer-main\\sourceCodeOfUsedProcAndLibs\\ProgressBar\\test.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
