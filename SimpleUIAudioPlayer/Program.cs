@@ -26,8 +26,12 @@ namespace Dotnet
         // Или же полностью равносильный запрос, только более понятный человеку
         // suiap --play someplaylist
         //
-        public static Mutex mtx = new Mutex();
+        public static Mutex mtx;
 
+        static Program()
+        {
+            mtx = new Mutex(false, "GlobalMutex");
+        }
         public static void Main(string[] args)
         {   
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
